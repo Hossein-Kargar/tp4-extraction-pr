@@ -1,0 +1,831 @@
+id_inline,pull_request_review_id,pr_id,path,user_inline,user_type_inline,agent,body_inline,matched_keywords,html_url
+2153757625,2937900662,3148267777,lisa/tools/ntttcp.py,Copilot,Bot,Copilot,"Added protocol_type field to TCP performance message as requested. The field is now set to TransportProtocol.Tcp, matching the pattern used in the UDP function. Commit 7e9c26f.",Add*,https://github.com/microsoft/lisa/pull/3863
+2145439275,2925383679,3134306675,inference/core/workflows/core_steps/models/foundation/perception_encoder/v1.py,hansent,User,OpenAI_Codex,"looks like it does:
+ - https://github.com/roboflow/inference/blob/main/inference/core/entities/requests/perception_encoder.py#L45 
+ 
+ 
+Clip also does actually and block decalres input the same way:
+`data: Union[Selector(kind=[IMAGE_KIND, STRING_KIND]), str]`
+
+
+@PawelPeczek-Roboflow Is this the only thing that would need to be added?
+```
+@classmethod
+def get_parameters_accepting_batches(cls) -> List[str]:
+    return [""data""]
+```
+",Add*,https://github.com/roboflow/inference/pull/1350
+2132905436,2906133773,3101464221,sdk/servicebus/azure-servicebus/TROUBLESHOOTING.md,swathipil,User,Copilot,"Remove, uncommon",Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41352
+2095629004,2850633230,3073705219,alpha_factory_v1/demos/aiga_meta_evolution/workflow_demo.py,Copilot,Bot,OpenAI_Codex,"The `LLM` instance is created but never passed into `AgentRuntime`. Consider initializing the runtime with the configured model, for example: `runtime = AgentRuntime(llm=LLM)` so your agent actually uses the intended OpenAI model.
+```suggestion
+    runtime = AgentRuntime(llm=LLM)
+```",Creat*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/361
+2215998734,3033473995,3242236662,esptool/cli_util.py,peterdragun,User,Copilot,"This seems more like adapting to an issue from `OptionEatAll` than fixing the root cause. Can you try to fix the root cause of this issue?
+
+I think we should fix the OptionEatAll custom parser - `parser_process`. We are encapsulating the value to list and then calling the original method from the click to append this new list to an already existing list. ",Encapsulat*; Fix*,https://github.com/espressif/esptool/pull/1103
+2198914106,3007629845,3220896124,.github/workflows/deploy-dev.yml,greptile-apps[bot],Bot,Devin,style: This hardcoded URL should be parameterized using environment variables or workflow inputs since the deployment URL may change,Chang*,https://github.com/reflex-dev/reflex-web/pull/1486
+2152925946,2936703915,3154258674,airbyte/_processors/sql/ducklake.py,aaronsteers,User,Devin,"Let's try to explicitly set the ducklake as the default DB after we attach it.
+
+```suggestion
+            connection.execute(attach_sql)
+            connection.execute(f""USE {self.catalog_name}""
+```
+
+I'll commit this change. You can re-pull.",Chang*,https://github.com/airbytehq/PyAirbyte/pull/695
+1956954351,2619175685,2841027811,airbyte-ci/connectors/pipelines/pipelines/airbyte_ci/connectors/publish/pipeline.py,davinchia,User,Devin,Where is the code that allows setting the manual override flag and skipping the version check on merge to master?,Merg*,https://github.com/airbytehq/airbyte/pull/53606
+1919989840,2558581317,2794323375,agentops/llms/providers/gemini.py,dot-agi,User,Devin,Return type should always be `dict` and so this method requires refactoring.,Refactor*,https://github.com/AgentOps-AI/agentops/pull/650
+2231138125,3055481856,3263291835,instructor/batch/providers/openai.py,ellipsis-dev[bot],Bot,Devin,"Replace print statements in the retry loop with logging to avoid direct stdout output in library code.
+```suggestion
+                    logger.info(
+```
+",Replac*,https://github.com/567-labs/instructor/pull/1747
+1906180500,2535599498,2773964481,src/bespokelabs/curator/llm/llm.py,vutrung96,User,Devin,"can you move this to line 237 and use it in the if statement in 238?
+
+```
+if not os.getenv(""CURATOR_DISABLE_CACHE"", """").lower() in [""true"", ""1""]:
+```",Mov*,https://github.com/bespokelabsai/curator/pull/324
+2227219786,3049824420,3254714553,docs/samples/client/csharp/SampleService/SampleClient/src/Generated/SampleTypeSpecClient.cs,ArcturusZhang,User,Copilot,"we should not touch anything outside `packages/http-client-csharp` directory.
+Please revert this change.",Chang*,https://github.com/microsoft/typespec/pull/7984
+2159240618,2946593197,3163701771,api/api/routers/runs_v1.py,guillaq,User,Cursor,"remove, field does not exist",Remov*,https://github.com/WorkflowAI/WorkflowAI/pull/525
+2098945168,2855696040,3075243153,python/packages/autogen-agentchat/tests/test_group_chat_graph.py,Copilot,Bot,Copilot,"Fixed in e2fdb7e. Added a condition lambda to the edge to C: `DiGraphEdge(target=""C"", condition=lambda msg: len(msg.to_model_text()) <= 5)`.",Add*; Fix*,https://github.com/microsoft/autogen/pull/6565
+2147012601,2928466830,3146310469,onnxscript/rewriter/deprecated_llama_rule_sets_test.py,justinchuby,User,Copilot,Just move everything to onnxscript/rewriter/basic_rules_test.py and remove this file,Mov*; Remov*; Rewrit*,https://github.com/microsoft/onnxscript/pull/2388
+2163320970,2952758505,3170984903,models/vista3d/docs/inference.md,Copilot,Bot,OpenAI_Codex,Fixed the typo 'segmentatation' to 'segmentation'.,Fix*,https://github.com/Project-MONAI/model-zoo/pull/754
+2151259762,2934046288,3151882306,packages/http-client-java/emitter/src/code-model-builder.ts,haolingdong-msft,User,Copilot,@copilot  why change this? don't use `__raw` type,Chang*,https://github.com/microsoft/typespec/pull/7661
+2120593117,2887562146,3108908027,dev/clint/src/clint/linter.py,harupy,User,Copilot,"```suggestion
+    violations: list[Violation] = []
+```
+
+let's add type hint.",Add*,https://github.com/mlflow/mlflow/pull/16009
+2191865989,2996596215,3211507551,.gitignore,Copilot,Bot,Copilot,Removed the unnecessary *.class entry from .gitignore in commit cd70a3c.,Remov*,https://github.com/camunda/camunda/pull/35007
+2182691050,2983025169,3196952174,.github/workflows/codeql.yml,Copilot,Bot,Copilot,"Fixed in commit ed2db87. Removed `utils/cluster_manager.py` from C/C++ analysis filter as it should only trigger Python CodeQL analysis, not other languages.",Fix*; Remov*,https://github.com/valkey-io/valkey-glide/pull/4287
+2214882941,3031779493,3231788654,qa/acceptance-tests/src/test/java/io/camunda/it/nodb/NoSecondaryStorageTest.java,abremard,User,Copilot,We already have a test above for unsupported endpoint so I'm just adding one for supported endpoints like `/topology`,Add*,https://github.com/camunda/camunda/pull/35374
+2149719449,2931716975,3130921190,doc/codegen/modular_codegen_design.md,Copilot,Bot,Copilot,"Added note that implementation as tasklets vs. code generation is an implementation detail that may be refined during development, distinguishing design concerns from implementation specifics. See commit 66be6e8.",Add*; Refin*,https://github.com/spcl/dace/pull/2036
+2217760708,3035972660,3246256169,.github/workflows/PR-auto-deploy.yml,Copilot,Bot,OpenAI_Codex,"Using PR number directly as port number could cause port conflicts or expose services on predictable ports. Consider using a port mapping strategy that avoids conflicts and reduces predictability.
+```suggestion
+                - ""${{ hash_port }}:8080""
+```",Reduc*,https://github.com/Stirling-Tools/Stirling-PDF/pull/3993
+2132712937,2905746914,3101464221,sdk/servicebus/azure-servicebus/TROUBLESHOOTING.md,swathipil,User,Copilot,"Remove section, not common errors.",Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41352
+2148994640,2930559602,3148402460,packages/http-client-csharp/global.json,ArcturusZhang,User,Copilot,please also revert the changes here.,Chang*,https://github.com/microsoft/typespec/pull/7644
+2145319141,2925203005,3143689167,.github/ISSUE_TEMPLATE/1-bug.yml,Copilot,Bot,Copilot,Added the library version field back as an optional field in the bug report template. This maintains helpful troubleshooting information while keeping the form streamlined. Commit ae4866f,Add*,https://github.com/microsoft/fabric-cicd/pull/342
+2217127207,3035110777,3241734959,ddns/util/http.py,Copilot,Bot,Copilot,"The retry logic for HTTP status codes has an off-by-one error. With retries=2, this condition `attempt < self.retries` means only the first attempt (attempt=1) can trigger a retry, but not the second attempt (attempt=2). This effectively reduces the retry count by 1.",Reduc*,https://github.com/NewFuture/DDNS/pull/536
+2101170061,2859121421,3080743634,packages/http-client-csharp/generator/Microsoft.TypeSpec.Generator/test/Writers/TestData/CodeWriterTests/ConsecutiveEmptyLinesSummary.cs,Copilot,Bot,Copilot,"I've updated the tests to follow the repository's testing pattern. In commit 6ba0635, I:
+
+1. Modified the existing ConsecutiveEmptyLinesSummary test to use Helpers.GetExpectedFromFile() 
+2. Added a new ThreeConsecutiveEmptyLinesSummary test that specifically validates the fix for three consecutive empty lines
+3. Ensured all test files have proper newline endings
+
+All tests are now passing, properly validating the XML documentation line break fix.",Add*; Fix*; Modif*,https://github.com/microsoft/typespec/pull/7423
+2103980410,2863466936,3085398469,dev/pyproject.py,Copilot,Bot,Copilot,"Updated the comment to clarify that databricks-agents is needed for multiple mlflow.genai functionalities, not just labeling. The updated comment now reads ""Required for mlflow.genai functionality (datasets, labeling, etc.)"". Changes in commit ad3166f.",Chang*,https://github.com/mlflow/mlflow/pull/15856
+2113672669,2877820760,3079886079,.github/copilot-instructions.md,Copilot,Bot,Copilot,Added a note highlighting that property names in template_schema.json and the parameters section in porter.yaml should match. (f149f42),Add*,https://github.com/microsoft/AzureTRE/pull/4561
+2210725878,3025514096,3203097519,onnx/inliner/inliner.cc,gramalingam,User,Copilot,"Can you move these changes into InliningRenamer directly, and avoid this new class? (Change method access to public for needed methods, and add any needed new method.)",Add*; Chang*; Inlin*; Mov*,https://github.com/onnx/onnx/pull/7112
+2103790395,2863140136,3085111843,requirements/constraints.txt,Copilot,Bot,Copilot,Added a TODO comment with a link to the issue. This will help track when we need to revisit and remove this constraint. Commit 2a86a13.,Add*; Remov*,https://github.com/mlflow/mlflow/pull/15848
+2121881600,2889520858,3060998787,airbyte-integrations/connectors/source-mongodb-v2/metadata.yaml,theyueli,User,Devin,@bnchrch @katmarkham @matteogp breaking change comments,Chang*,https://github.com/airbytehq/airbyte/pull/60252
+2141302180,2919028392,3138279170,src/halmos/solve.py,Copilot,Bot,Copilot,Made tag required in PathContext by removing `| None` type hint and adjusting parameter order. (b421f6e),Remov*,https://github.com/a16z/halmos/pull/541
+2222175783,3042484153,3148932692,src/qcodes/dataset/descriptions/dependencies.py,Copilot,Bot,Copilot,"The error message should be more descriptive. Consider adding information about available parameters or suggesting how to resolve the issue.
+```suggestion
+            available_params = "", "".join(self.graph.nodes)
+            raise ValueError(
+                f""Parameter '{initial_param.name}' is not part of the graph. ""
+                f""Available parameters are: {available_params}. ""
+                f""Please check if the parameter name is correct or if the graph has been properly initialized.""
+            )
+```",Add*,https://github.com/microsoft/Qcodes/pull/7240
+2096455320,2851946565,3074925487,python/packages/autogen-ext/pyproject.toml,Copilot,Bot,Copilot,"GraphRAG 2.2.1 introduces several changes from 1.0.1, but our current usage in AutoGen doesn't require code changes. Key updates include a new data model with consistent entity fields, required vector store integration, and improved search capabilities. The breaking-changes.md file in the GraphRAG repository documents these changes. Our update ensures that users who install the latest version will have access to all the new features while maintaining compatibility with our existing code.",Chang*; Improv*; Introduc*,https://github.com/microsoft/autogen/pull/6563
+2118686352,2885075533,3106326653,.github/policy.rego,Copilot,Bot,Copilot,Renamed to `get_unpinned_actions` as requested. Changes in commit 586935e.,Chang*; Renam*,https://github.com/mlflow/mlflow/pull/15996
+2110894936,2873536109,3090570894,tests/undefined_symbol_test.py,tbennun,User,Copilot,"Shouldn't the assertions here be more specific to undefined? You know what would be a great idea? If you had a function `symbolic.is_undefined` that checks the atoms of an expression for undefined symbols! That would be a great assertion to have! Of course, you should add unit tests with well-defined symbolic and constant expressions to see that it returns False if that's not the case.",Add*,https://github.com/spcl/dace/pull/2019
+2104680138,2864568034,3086457034,.github/actions/validate-author/index.js,harupy,User,Copilot,can we improve this message?,Improv*,https://github.com/mlflow/mlflow/pull/15865
+2143723510,2922757328,3135068930,olive/api/README.md,xiaoyu-work,User,Copilot,"Remove this file, combine this content to documentation you added.",Add*; Remov*,https://github.com/microsoft/Olive/pull/1907
+2062770473,2797801715,3023432503,docs/vars/serialization.md,Alek99,User,Devin,remove this one,Remov*,https://github.com/reflex-dev/reflex-web/pull/1305
+2172094595,2966671046,3182767311,ui/app/src/components/shared/ResourceCard.tsx,Copilot,Bot,Copilot,"Updated to show owner information on the resource card itself (below the description) and changed the popup label to ""Owner ID:"" as requested.",Chang*,https://github.com/microsoft/AzureTRE/pull/4610
+2100053671,2857358879,3079886079,.github/copilot-instructions.md,Copilot,Bot,Copilot,Removed the instruction to update versions in the CHANGELOG as part of development. Also updated the example changelog entry to match the correct format. (044afed),Chang*; Remov*,https://github.com/microsoft/AzureTRE/pull/4561
+2108051587,2869418166,3092400652,.github/workflows/cross-version-tests.yml,harupy,User,Copilot,looks like you removed unrelated fields. Let's restore them.,Remov*,https://github.com/mlflow/mlflow/pull/15889
+2200489667,3009907267,3222017344,clients/java/src/test/java/io/camunda/client/adhocsubprocess/AdHocSubProcessActivityActivationTest.java,maff,User,Copilot,Why change this class at all?,Chang*,https://github.com/camunda/camunda/pull/35209
+2165267167,2955920389,3172846336,packages/http-client-csharp/global.json,Copilot,Bot,Copilot,Reverted changes to this file. (commit bd7c811),Chang*,https://github.com/microsoft/typespec/pull/7729
+2196253794,3003480066,3207348309,smoke-tests/apps/HttpClients/src/smokeTest/java/com/microsoft/applicationinsights/smoketest/HttpClientTest.java,Copilot,Bot,Copilot,"Added SampleRate verification support to the assertion framework. Both `RequestAssert` and `DependencyAssert` now have `hasSampleRate(Float)` and `hasNoSampleRate()` methods. Updated the HttpClients test to include `hasNoSampleRate()` assertions for the request and all dependencies, maintaining full functional equivalence with the original test. (502cd58)",Add*,https://github.com/microsoft/ApplicationInsights-Java/pull/4269
+2094201190,2848387949,3070740875,autogpt_platform/backend/backend/blocks/exa/helpers.py,Copilot,Bot,OpenAI_Codex,"[nitpick] Consider adding a brief docstring for to_camel_case_dict to explain its role in converting dictionary keys to camelCase, including its recursive handling of nested dictionaries and lists.",Add*,https://github.com/Significant-Gravitas/AutoGPT/pull/9958
+2147417265,2928953004,3138534395,src/sentry/integrations/source_code_management/language_parsers.py,iamrajjoshi,User,Cursor,"yeah, we just can't extract any function names for this to try to match",Extract*,https://github.com/getsentry/sentry/pull/93402
+2082623198,2829896171,3053343945,docs/integrations/sources/freshservice.md,ian-at-airbyte,User,Devin,Can you tell me why you added this stream to the documentation?,Add*,https://github.com/airbytehq/airbyte/pull/59764
+2144636503,2924097692,3142842662,.circleci/config.yml,Copilot,Bot,Copilot,Simplified the step to show only the total size of docs/build/latest directory as requested. Commit 3827261.,Simplif*,https://github.com/mlflow/mlflow/pull/16243
+1997126787,2688117996,2922352169,docs/understanding-airbyte/file-transfer.md,aaronsteers,User,Devin,"```suggestion
+- Both the source and destination must support File Sync.
+- File Sync is designed for raw file movement, not for transforming data.
+- Maximum file size limits may apply depending on the connectors.
+```",Mov*,https://github.com/airbytehq/airbyte/pull/55783
+2180673769,2980154267,3119512382,sdk/tools/azure-openrewrite/pom.xml,Copilot,Bot,Copilot,"I cannot add an x-version-update tag to line 237 because the entire dependency block (lines 233-240) is commented out due to ""Dependency not available in Maven Central"". Adding a comment tag inside an XML comment block would create invalid XML. Should this dependency be uncommented to add the tag, or would you prefer a different approach?",Add*; Creat*,https://github.com/Azure/azure-sdk-for-java/pull/45595
+2138310757,2914276508,3133771594,src/qcodes/dataset/database_extract_runs.py,Copilot,Bot,Copilot,Refactored the function to eliminate duplication by introducing a `need_export` flag that controls when to call `dataset.export()`. The export logic is now consolidated into a single code path. 09dbbdf,Introduc*; Refactor*,https://github.com/microsoft/Qcodes/pull/7213
+2202754920,3013276959,3225037054,ddns/provider/namesilo.py,Copilot,Bot,Copilot,Simplified `_query_record` logic by removing intermediate variables and using direct comparisons. Commit: a2a1d01,Remov*; Simplif*,https://github.com/NewFuture/DDNS/pull/514
+2205464966,3017212109,3203097519,onnx/inliner/inliner.cc,gramalingam,User,Copilot,I think this condition is expected to be true? Maybe it is better to change the if-condition to an assert that rename_scopes is not empty?,Chang*; Renam*,https://github.com/onnx/onnx/pull/7112
+2220015886,3039335843,3214122373,examples/library_node_expansion_demo.py,tbennun,User,Copilot,"No need for example file, remove.",Remov*,https://github.com/spcl/dace/pull/2077
+2101155889,2859103022,3080743634,packages/http-client-csharp/generator/Microsoft.TypeSpec.Generator/test/Writers/TestData/CodeWriterTests/ConsecutiveEmptyLinesSummary.cs,jorgerangel-msft,User,Copilot,"If you are adding a test data file for unit tests, then you should follow the testing pattern establishing in this repo. The unit test should validate the generated output with the TestData file. You can see an existing example of the pattern [here](https://github.com/microsoft/typespec/blob/4b9ced43faf22f000334117bfc146d2331df0dc9/packages/http-client-csharp/generator/Microsoft.TypeSpec.Generator/test/Providers/ConstructorProviderTests.cs#L16). What is necessary for this pr, is to also add a unit test that replicates the exact statement being built in the original issue. The unit test should confirm things are generated / printed correctly.",Add*,https://github.com/microsoft/typespec/pull/7423
+1934564470,2582224153,2819134642,docusaurus/sidebars.js,aaronsteers,User,Devin,"I can't do much to review the changes in this file, but if preview is working, I assume the code is working properly.",Chang*,https://github.com/airbytehq/airbyte/pull/52636
+1969253591,2640086584,2876006908,src/zenml/materializers/built_in_materializer.py,schustmi,User,Claude_Code,"I think this needs a major rework: This code is not using ZenML materializers anymore and instead simply uses pickle for everything. If that was a good solution, instead of doing all this chunking we could just tell people to pickle the whole collection.",Rework*,https://github.com/zenml-io/zenml/pull/3375
+2065420473,2801942427,3027010160,docs/assets/overview.md,Alek99,User,Devin,Remove simply,Remov*,https://github.com/reflex-dev/reflex-web/pull/1313
+2218401123,3036871437,3247403285,CONTRIBUTING.md,bewithgaurav,User,Copilot,"Please change this line for reviewers to strictly read and use PR template while raising PRs, since the format/rules are already defined in PR description template.",Chang*,https://github.com/microsoft/mssql-python/pull/149
+2211684135,3026992154,3225168727,.github/workflows/package.json,jamesx-improving,User,Copilot,consider move this file to `.github/dependabot-deps/`,Mov*,https://github.com/valkey-io/valkey-glide/pull/4353
+2241905571,3070396706,3221328642,src/tasks.rs,kemingy,User,Copilot,"You should create a sync.rs file that contains both std and loom sync to be imported by TaskManager to use. Otherwise, this test doesn't add any benefit from loom.",Add*; Creat*,https://github.com/mosecorg/mosec/pull/658
+2154875074,2939663728,3156938074,agent/api/agent_server/models.py,keugenek,User,Devin,name better to not change after app_name removed,Chang*; Remov*,https://github.com/appdotbuild/agent/pull/299
+2145921879,2926099334,3126336730,docker-images/Dockerfile.python-connector,aaronsteers,User,Devin,Added (new) - this supports installing and testing connectors using dev versions of the CDK.,Add*,https://github.com/airbytehq/airbyte/pull/61443
+2203097629,3013789366,3225037054,ddns/provider/namesilo.py,NewFuture,User,Copilot,"@copilot you should remove test_query_record_success_single_record test, it not a real case.",Remov*,https://github.com/NewFuture/DDNS/pull/514
+2206413115,3018694950,3230759504,onnxscript/rewriter/pattern_match_context_test.py,gramalingam,User,Copilot,Replace this by an assertion that context.main_root_node is same as model.graph.node(2),Replac*,https://github.com/microsoft/onnxscript/pull/2455
+2133068072,2906408726,3125880075,sdk/evaluation/azure-ai-evaluation/azure/ai/evaluation/_evaluate/_evaluate.py,singankit,User,Copilot,Remove it from public interface and roll it into kwargs,Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41465
+2164950150,2955413868,3161407157,onnx/defs/printer.cc,Copilot,Bot,Copilot,"You're absolutely right to point out this inconsistency. Let me clarify:
+
+1. **Low precision data types (FLOAT16, BFLOAT16, etc.)**: These DO support round-tripping because both the parser and printer use the `int32_data` field. This was validated and works correctly.
+
+2. **Hex format for unknown types**: This does NOT support round-tripping. The parser cannot parse hex literals like `{0x3c004000}`. This is display-only for inspection of truly unsupported raw_data types.
+
+The printer doesn't guarantee round-tripping for all cases - only for supported data types. For unknown types with raw_data, it provides hex inspection but this cannot be parsed back.
+
+I should have been clearer about this distinction in my earlier responses. The main fix (low precision types) does support round-tripping, but the fallback hex display is inspection-only.",Fix*,https://github.com/onnx/onnx/pull/7063
+2222862146,3043474247,3250824111,ddns/util/task.py,Copilot,Bot,Copilot,"Added fallback status checking in get_status() method. Now when the primary scheduler is not installed, it checks if a fallback scheduler (like cron) has the task installed and reports its status. Commit f8a1d0a",Add*,https://github.com/NewFuture/DDNS/pull/541
+2155562255,2940782437,3135068930,olive/cli/__init__.py,jambayk,User,Copilot,"since the api.py file is already under `olive.cli`, it already assumes it's related to cli. so, I thought there is no reason to add the imports here as well since there is no use for it. the init file can just import from olive.cli.api directly",Add*,https://github.com/microsoft/Olive/pull/1907
+2190340314,2994249095,3188978416,zeebe/qa/integration-tests/src/test/java/io/camunda/zeebe/it/clustering/dynamic/ScaleUpPartitionsTest.java,deepthidevaki,User,Copilot,":wrench: You can extract into parameter source. This would be cleaner. 
+
+Something like the following:
+```
+ // Argument supplier
+  static Stream<Function<TestCluster, TestStandaloneBroker>> restartTargets() {
+    return Stream.of(
+        ScaleUpPartitionsTest::restartBootstrapNode, ScaleUpPartitionsTest::restartBootstrapNode);
+  }
+
+  static TestStandaloneBroker restartBootstrapNode(final TestCluster cluster) {
+    // if broker 0 is leader of partition 1, await until broker 0 is not leader of partition 1
+    // restart broker 0
+    return cluster.brokers().get(member0);
+  }
+
+  static TestStandaloneBroker restartPartitionOneLeader(final TestCluster cluster) {
+    return cluster.leaderForPartition(1);
+  }
+```",Extract*,https://github.com/camunda/camunda/pull/34576
+1907988924,2538486048,2773964481,src/bespokelabs/curator/llm/llm.py,vutrung96,User,Devin,why do you need to change this?,Chang*,https://github.com/bespokelabsai/curator/pull/324
+2217138569,3035128932,3241734959,ddns/util/http.py,Copilot,Bot,Copilot,"The exponential backoff calculation '2**attempt' is repeated multiple times. Consider extracting this into a helper method or constant to avoid magic numbers and improve maintainability.
+```suggestion
+                        logger.warning(""HTTP %d error, retrying in %d seconds"", res.getcode(), self._calculate_backoff(attempt))
+                        time.sleep(self._calculate_backoff(attempt))
+```",Extract*; Improv*,https://github.com/NewFuture/DDNS/pull/536
+2152762331,2936452521,3154179065,ingestr/main_test.py,Copilot,Bot,OpenAI_Codex,Multiple similar test functions for different gzipped formats suggest a potential for parameterization to reduce code duplication and simplify maintenance.,Reduc*; Simplif*,https://github.com/bruin-data/ingestr/pull/256
+2132871882,2905746914,3101464221,sdk/servicebus/azure-servicebus/TROUBLESHOOTING.md,swathipil,User,Copilot,Remove,Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41352
+1990366559,2676534040,2912249467,airbyte-integrations/connectors/source-mssql/CHANGELOG.md,theyueli,User,Devin,"instead of updating this changelog, please update this one instead:
+
+docs/integrations/sources/mssql.md",Chang*,https://github.com/airbytehq/airbyte/pull/55709
+2130337152,2902308158,3119042017,docs/source/_static/versions.json,xiaoyu-work,User,Copilot,"You should not only include main branch, all versions associated with tags in this repo should be added to this json file.",Add*,https://github.com/microsoft/Olive/pull/1897
+2165059295,2955594209,3169504363,sdk/clientcore/core/src/main/java/io/clientcore/core/utils/ServerSentEventUtils.java,Copilot,Bot,Copilot,"Consider using a ByteArrayOutputStream instead of a List<Byte> for accumulating bytes. This may improve performance and simplify the conversion to a UTF-8 string.
+```suggestion
+            // Use ByteArrayOutputStream to accumulate UTF-8 bytes and convert to string line by line
+            ByteArrayOutputStream lineBytes = new ByteArrayOutputStream();
+```",Improv*; Simplif*,https://github.com/Azure/azure-sdk-for-java/pull/45800
+2157340516,2943558706,3160790203,.github/copilot-instructions.md,Copilot,Bot,Copilot,"Added guidance for selecting test cases when changes aren't related to specific test cases: ""When the change is not related to specific test cases, choose the test cases that can test the change."" (eb9a04e)",Add*; Chang*,https://github.com/microsoft/lisa/pull/3872
+2159752627,2947407238,3160616420,docs/IR.md,Copilot,Bot,Copilot,"Fixed in d980259 - changed to ""IR version >= 11""",Chang*; Fix*,https://github.com/onnx/onnx/pull/7056
+2240798642,3068944944,3200033873,tests/test_main.py,ethanwhite,User,Copilot,Still not clear what is happening with this change and how it relates to everything else.,Chang*,https://github.com/weecology/DeepForest/pull/1089
+2101628209,2859771146,3081361910,lisa/operating_system.py,LiliDeng,User,Copilot,"@copilot please fix check errors:
+./lisa/operating_system.py:226:5: E704 multiple statements on one line (def)
+./lisa/operating_system.py:226:68: BLK100 Black would make changes.
+./lisa/operating_system.py:732:17: E701 multiple statements on one line (colon)
+./lisa/operating_system.py:753:19: E701 multiple statements on one line (colon)
+./lisa/operating_system.py:1478:19: E701 multiple statements on one line (colon)",Chang*; Fix*,https://github.com/microsoft/lisa/pull/3816
+2168071106,2960493557,3177673933,docs/enterprise/mantine/collapse.md,greptile-apps[bot],Bot,Devin,"logic: Event handler reference incorrect. The lambda function makes a reference to the function instead of calling it. Remove the lambda.
+
+```suggestion
+            on_click=CollapseState.toggle_collapse,
+```",Remov*,https://github.com/reflex-dev/reflex-web/pull/1447
+2210037657,3024338128,3235347485,ddns/provider/noip.py,NewFuture,User,Copilot,"don't change the endpoint here, you can move this whole check and update endpoint logic in the `_validate`",Chang*; Mov*,https://github.com/NewFuture/DDNS/pull/528
+2172494562,2967321419,3183430843,tests/test_fabric_workspace.py,jmuziki,User,Copilot,linting changes to this file are not required and should not be included in this PR,Chang*,https://github.com/microsoft/fabric-cicd/pull/369
+2156595944,2942318577,3159178442,sdk/ml/azure-ai-ml/azure/ai/ml/_azure_environments.py,Copilot,Bot,Copilot,Fixed in commit 02110174. Removed the metadata_url parameter from the warning message as it may contain sensitive information.,Fix*; Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41663
+2185692017,2987743642,3203097519,=0.10.7,gramalingam,User,Copilot,Looks like this file was added by mistake? It shouldn't be checked in.,Add*,https://github.com/onnx/onnx/pull/7112
+2101215332,2859189353,3081369417,docs/installation_linux.rst,squirrelsc,User,Copilot,Remove (Mariner) too.,Remov*,https://github.com/microsoft/lisa/pull/3818
+2227321077,3049955053,3247126423,authentication/src/main/java/io/camunda/authentication/ConditionalOnNoSecondaryStorage.java,abremard,User,Copilot,"Good catch, I've rebased with main and moved the `ConditionalOnSecondaryStorageDisabled` to the auth module so it can be used in both modules",Mov*,https://github.com/camunda/camunda/pull/35632
+2118948584,2885390502,3106326653,.github/policy.rego,Copilot,Bot,Copilot,Removed the redundant `get_unpinned_actions_from_steps` function and inlined its logic directly into both `get_unpinned_actions` definitions. This eliminates the code duplication and makes the code cleaner. Commit 116531f,Code clean*; Inlin*; Remov*,https://github.com/mlflow/mlflow/pull/15996
+2172841364,2967922995,3180363547,src/fabric_cicd/publish.py,Copilot,Bot,Copilot,Now using self.workspace_items instead of deployed_items to obtain the sqlendpoint (defaults to empty string if not available). This also optimizes performance by reducing dictionary lookups. Commit 2152ec1 addresses this.,Add*; Reduc*,https://github.com/microsoft/fabric-cicd/pull/363
+2146961131,2928386976,3145372553,onnxscript/function_libs/torch_lib/ops/prims.py,justinchuby,User,Copilot,"Is there a way to simplify and avoid op.ScatterElements, and Gather, which are costly?",Simplif*,https://github.com/microsoft/onnxscript/pull/2382
+2132747913,2905746914,3101464221,sdk/servicebus/azure-servicebus/TROUBLESHOOTING.md,swathipil,User,Copilot,"Replace with:
+```suggestion
+- **ServiceBusQuotaExceededError:** This typically indicates that there are too many active receive operations for a single entity. In order to avoid this error, reduce the number of potential concurrent receives. You can use batch receives to attempt to receive multiple messages per receive request. Please see [Service Bus quotas](https://learn.microsoft.com/azure/service-bus-messaging/service-bus-quotas) for more information.
+```",Reduc*; Replac*,https://github.com/Azure/azure-sdk-for-python/pull/41352
+2173529730,2968999278,3185333353,tests/transforms/augmentation/test_random_affine.py,Copilot,Bot,Copilot,Changed variable name to `subject`. Commit 92e622f,Chang*,https://github.com/TorchIO-project/torchio/pull/1330
+2182854526,2983284397,3198732250,.github/workflows/upsert-preview-docs-comment.js,Copilot,Bot,Copilot,Renamed the script to `preview-comment.js` and updated all references in the workflow file. Commit 8437503,Renam*,https://github.com/mlflow/mlflow/pull/16551
+2240700509,3068778628,3250546916,olive/cli/optimize.py,xiaoyu-work,User,Copilot,"1. Follow the olive/cli/api.py pattern and add this CLI as a python api as well.
+2. Update document as well docs/source/reference/python_api.md",Add*,https://github.com/microsoft/Olive/pull/1996
+2108388917,2869901959,3092878143,README.md,Copilot,Bot,Copilot,I've moved the DeepWiki badge after the Twitter badge as requested in commit f5628a5.,Mov*,https://github.com/mlflow/mlflow/pull/15893
+2098764367,2855436093,3077823693,SUPPORT.md,Copilot,Bot,Copilot,I've restored the GitHub Discussions link in both SUPPORT.md and the English translation file. This change was committed in d43bb32.,Chang*,https://github.com/microsoft/mcp-for-beginners/pull/56
+2103302510,2862420506,3081171929,packages/http-client-csharp/readme.md,Copilot,Bot,Copilot,I've replaced all instances of `CodeGenModel` with `CodeGenType` in the documentation in commit 2d460e1.,Replac*,https://github.com/microsoft/typespec/pull/7425
+2103119516,2862124875,3084107311,.github/workflows/typespec-azure-integration-check.yml,Copilot,Bot,Copilot,Removed the step for checking out the TypeSpec repo as it's not needed.,Remov*,https://github.com/microsoft/typespec/pull/7439
+2128288604,2899392303,3113782046,docs/run_test/platform.rst,Copilot,Bot,Copilot,Simplified documentation examples in commit f00ab6f. Removed the variable file example and now only show string and list format samples as requested.,Remov*; Simplif*,https://github.com/microsoft/lisa/pull/3839
+2172504467,2967335614,3183430843,src/fabric_cicd/constants.py,Copilot,Bot,Copilot,You're absolutely right. I've reverted the unrelated linting changes to this file. The changes are now focused only on the PR-to-issue workflow feature. (cd8dabe),Chang*,https://github.com/microsoft/fabric-cicd/pull/369
+2174605782,2970493532,3179515957,packages/http-client-python/eng/scripts/setup/prepare.py,msyyc,User,Copilot,"@copilot We could get venv_context by `create_venv_with_package_manager`, too.",Creat*,https://github.com/microsoft/typespec/pull/7760
+2220147303,3039540344,3214122373,tests/library/library_node_expand_test.py,Copilot,Bot,Copilot,"Added a comprehensive test for library node expansion with keyword arguments. Created a ""tiled"" expansion for AddNode that accepts a `tile_size` parameter using the `@library.register_expansion` decorator. The test verifies that keyword arguments passed to `expand()` are properly forwarded to the expansion's static method and used correctly (tile sizes 16 and 32 are tested). Also removed the irrelevant `test_gemm_expansion_with_arguments` test as requested.",Add*; Creat*; Remov*,https://github.com/spcl/dace/pull/2077
+2168071139,2960493557,3177673933,docs/enterprise/ag_grid/model-wrapper.md,greptile-apps[bot],Bot,Devin,"syntax: Change 'model_wrapper use' to 'model_wrapper uses' for subject-verb agreement
+
+```suggestion
+By default the model_wrapper uses the infinite rows model from AgGrid.
+```",Chang*,https://github.com/reflex-dev/reflex-web/pull/1447
+2228204479,3051195592,3259170663,clients/java/src/main/java/io/camunda/client/api/search/response/DecisionInstance.java,megglos,User,Copilot,"❌ this is unnecessary, please remove this import",Remov*,https://github.com/camunda/camunda/pull/35888
+2132873101,2905746914,3101464221,sdk/servicebus/azure-servicebus/TROUBLESHOOTING.md,swathipil,User,Copilot,Remove. Not helpful and uncommon.,Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41352
+2192973241,2998373727,3213048977,.gitignore,Copilot,Bot,Copilot,Moved the .spack/packages.yaml gitignore rule to lib/spack/docs/.gitignore as requested. Commit: f12b3c8,Mov*,https://github.com/spack/spack/pull/50977
+2096583627,2852142991,3070933575,.github/workflows/community-pr-welcome.yml,aaronsteers,User,Devin,"Updating to be more concise.
+
+```suggestion
+# To manually test this workflow without a real fork PR, temporarily comment-out the fork condition in the
+# `if:` clause and uncomment the ""synchronize"" event type as a workflow trigger.
+# Then the workflow will run for all new commits.
+#
+# Before merging, remember to again comment-out the ""synchronize"" clause and uncomment the `if:` condition.
+```
+",Merg*,https://github.com/airbytehq/airbyte/pull/60531
+2198264471,3006585791,3193634550,sdk/evaluation/azure-ai-evaluation/azure/ai/evaluation/__init__.py,Copilot,Bot,Copilot,"Done! Removed the [INFO] prefix from all error messages in the lazy import functions. Updated both the main `__init__.py` and the red team module for consistency, along with the corresponding unit tests. (8cd6833)",Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41852
+2216350731,3033996457,3132024225,tests/integration/cartography/intel/aws/ec2/test_ec2_snapshots.py,d-aggarwal,User,OpenAI_Codex,"
+Just a quick thought — Can we consider removing the test_load functions, since it looks like their logic is already covered in the test_sync_ebs_snapshots and test_sync_ebs_snapshots_with_snapshots_in_use tests?",Remov*,https://github.com/cartography-cncf/cartography/pull/1623
+2125677203,2895263933,3116482876,backend/onyx/connectors/github_code/connector.py,greptile-apps[bot],Bot,OpenAI_Codex,"logic: Does not handle file deletions in commits. Need to check file_info['status'] to properly handle deleted files.
+
+```suggestion
+                    for file_info in commit_data.get('files', []):
+                        filename = file_info.get('filename')
+                        status = file_info.get('status')
+                        if filename and status != 'removed' and self._include_file(filename):
+                            changed_files.add(filename)
+```",Add*; Chang*; Remov*,https://github.com/onyx-dot-app/onyx/pull/4823
+2142037357,2920042489,3139316930,pinot-controller/src/main/resources/app/pages/TenantDetails.tsx,Copilot,Bot,OpenAI_Codex,"[nitpick] The StatusFilter component is instantiated twice in this file; consider reusing the already defined segmentStatusFilterElement variable to reduce code duplication and improve maintainability.
+```suggestion
+              additionalControls={segmentStatusFilterElement}
+```",Add*; Improv*; Reduc*,https://github.com/apache/pinot/pull/16085
+2162931637,2952129483,3170199750,src/cook-web/src/components/chapter-setting/index.tsx,Copilot,Bot,Devin,[nitpick] Extracting these inline styles into a dedicated CSS class can simplify future adjustments and promote consistency across similar UI elements.,Extract*; Inlin*; Simplif*,https://github.com/ai-shifu/ai-shifu/pull/582
+2187774983,2990711312,3205680199,scripts/kill_zombie_runs.py,Copilot,Bot,OpenAI_Codex,"[nitpick] Consider adding a shebang (e.g., `#!/usr/bin/env python3`) at the top of this script to make it directly executable.",Add*,https://github.com/andrewm4894/anomstack/pull/167
+2133078402,2906422355,3118735492,src/halmos/config.py,Copilot,Bot,Copilot,"Updated to use `str` type annotation with `global_default=""""` instead of `None` to maintain consistency and resolve argparse compatibility issues. Changes in 9e13542.",Chang*,https://github.com/a16z/halmos/pull/533
+1896232580,2521288742,2756921963,tests/openai_handlers/test_openai_integration.py,entelligence-ai-pr-reviews[bot],Bot,Devin,"⚠️  Potential Issue:<br>
+<strong>Review Change in OpenAI Model Version</strong>
+The change from 'gpt-4o-mini' to 'gpt-3.5-turbo' in the OpenAI API call is significant and should be carefully reviewed. This modification can impact the test's behavior and results, as different models may have varying capabilities and performance characteristics. Ensure that 'gpt-3.5-turbo' aligns with the test's objectives and does not introduce regressions. Additionally, update any related documentation or test expectations to reflect this change. Verify that the new model meets the requirements of the integration test, especially in terms of output consistency and performance.
+
+
+<details>
+<summary><strong>🔧 Suggested Code Diff: </strong></summary>
+
+```diff
+- model=""gpt-4o-mini"",
++ model=""gpt-3.5-turbo"",
+```
+
+</details>
+<!-- suggestion_start -->
+
+<details>
+<summary><strong>📝 Committable Code Suggestion</strong></summary>
+
+> ‼️ Ensure you review the code suggestion before committing it to the branch. Make sure it replaces the highlighted code, contains no missing lines, and has no issues with indentation. 
+
+```suggestion
+def sync_stream():
+    client = OpenAI(api_key=os.getenv(""OPENAI_API_KEY""))
+    stream_result = client.chat.completions.create(
+        model=""gpt-3.5-turbo"",
+        messages=[{""role"": ""user"", ""content"": ""Hello from sync streaming""}],
+        stream=True
+    )
+```
+
+</details>
+
+---
+
+",Add*; Chang*; Creat*; Introduc*; Modif*; Replac*,https://github.com/AgentOps-AI/agentops/pull/603
+2139611328,2916282519,3132622672,packages/http-specs/specs/type/union/discriminated/main.tsp,msyyc,User,Copilot,"@Copilot  add optional parameter `kind?: string`. When `kind` is null or ""cat"", return response for ""cat""; when ""dog"", return response for ""dog"".",Add*,https://github.com/microsoft/typespec/pull/7602
+2110921512,2873589399,3090570894,dace/codegen/targets/cpp.py,Copilot,Bot,Copilot,Fixed - removed allow_undefined parameter as requested in 78065af.,Fix*; Remov*,https://github.com/spcl/dace/pull/2019
+2188039589,2991022401,3199905484,python/packages/autogen-agentchat/src/autogen_agentchat/teams/_group_chat/_graph/_digraph_group_chat.py,Copilot,Bot,Copilot,"Moved the execution state reset logic to the `select_speaker` method. Now the reset only happens when the stop agent is selected, ensuring the graph naturally completes before resetting. Commit: 229e8fc",Mov*,https://github.com/microsoft/autogen/pull/6747
+2136908626,2911958009,3130921190,doc/codegen/modular_codegen_design.md,Copilot,Bot,Copilot,"Added explicit documentation that the TargetCodeGenerationPass calls the target code generators (CppCodeGen, GPUCodeGen, FPGACodeGen, etc.) to generate platform-specific code. See commit 4f14e86.",Add*,https://github.com/spcl/dace/pull/2036
+2096313823,2851721429,3074733010,alpha_factory_v1/demos/alpha_agi_business_v1/openai_agents_bridge.py,Copilot,Bot,OpenAI_Codex,[nitpick] Mutating the module‐level `HOST` via a global can lead to harder-to-track state. Consider passing the host value through function parameters or encapsulating it in an object instead of using `global`.,Encapsulat*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/386
+2107825055,2869122121,3090570894,tests/undefined_symbol_in_sdfg_test.py,Copilot,Bot,Copilot,The test was skipped because it was meant to fail. I've reorganized the tests in fe93a1e to properly test the UndefinedSymbol validation while also handling the CI environment limitations.,Reorganiz*,https://github.com/spcl/dace/pull/2019
+2099095395,2855913584,3078554288,alpha_factory_v1/demos/alpha_agi_business_v1/openai_agents_bridge.py,Copilot,Bot,OpenAI_Codex,"Consider catching specific network-related exceptions instead of relying solely on substring checks of the exception message to improve error handling clarity.
+```suggestion
+            if isinstance(exc, requests.exceptions.ConnectionError):
+```",Improv*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/449
+2202861081,3013451106,3225468380,custom_components/smart_irrigation/__init__.py,Copilot,Bot,Copilot,Fixed in commit 8581349. The async_update_mapping method is now properly async and can be awaited.,Fix*,https://github.com/jeroenterheerdt/HAsmartirrigation/pull/585
+2173530360,2969001250,3185333353,src/torchio/transforms/augmentation/spatial/random_affine.py,fepegar,User,Copilot,Split in two lines,Split*,https://github.com/TorchIO-project/torchio/pull/1330
+2132903028,2906133773,3101464221,sdk/servicebus/azure-servicebus/TROUBLESHOOTING.md,swathipil,User,Copilot,"Move this section under the ""Troubleshooting receiver issues"" section.",Mov*,https://github.com/Azure/azure-sdk-for-python/pull/41352
+2161767333,2950340437,3163701771,api/api/routers/runs_v1.py,pierrevalade,User,Cursor,"OK, I'll open a Linear to clarify what `workflowai.` metadata are added automatically. 
+> https://linear.app/workflowai/issue/WOR-5052/document-automatically-added-workflowai-metadata-keys",Add*,https://github.com/WorkflowAI/WorkflowAI/pull/525
+2136666303,2911612660,3131428834,sdk/schemaregistry/azure-schemaregistry/CLIENT_DEVELOPER.md,swathipil,User,Copilot,"Do not list exact files in either generated or handwritten code. Just mention that any files with name _patch.py or under encoder/jsonencoder include handwritten code. Otherwise, all files under azure/ are generated and generated files should not be modified manually.",Modif*,https://github.com/Azure/azure-sdk-for-python/pull/41491
+2203630106,3014448826,3194236413,.github/workflows/micrometer-stress-test.yml,Copilot,Bot,Copilot,Changed the stress test to run all micrometer-1.0 tests instead of just the specific test. This should better reproduce the flakiness that occurs when tests run together. Commit: 0f13638,Chang*,https://github.com/microsoft/ApplicationInsights-Java/pull/4255
+2216954193,3034874580,3241853233,cartography/models/aws/rds/cluster.py,achantavy,User,OpenAI_Codex,"yeah, the RDS instance has [lots of fields](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DBInstance.html). Existing code has this https://github.com/cartography-cncf/cartography/blob/6d876d6ef558caa055d39e7908a1c33bedf2acfd/cartography/intel/aws/rds.py#L55-L90. This PR keeps that existing functionality without removing fields",Remov*,https://github.com/cartography-cncf/cartography/pull/1697
+2138190724,2914066613,3133771594,src/qcodes/dataset/database_extract_runs.py,Copilot,Bot,Copilot,The _add_run_to_runs_table function is the appropriate API for dataset extraction operations as it preserves original GUIDs and metadata. This is the designed approach for moving runs between databases.,Extract*; Mov*,https://github.com/microsoft/Qcodes/pull/7213
+2101618224,2859756911,3081361910,lisa/operating_system.py,Copilot,Bot,Copilot,I've removed the redundant f-string and quotes in operating_system.py. The line now properly uses a single f-string. I also ran black on the file to fix all formatting issues. Changes are in commit b958e4a.,Chang*; Fix*; Remov*,https://github.com/microsoft/lisa/pull/3816
+2094201189,2848387949,3070740875,autogpt_platform/backend/backend/blocks/exa/helpers.py,Copilot,Bot,OpenAI_Codex,[nitpick] Consider adding a docstring for the _to_camel_case helper to clearly describe its purpose and expected behavior.,Add*,https://github.com/Significant-Gravitas/AutoGPT/pull/9958
+2214884485,3031789545,3241734959,ddns/util/http.py,NewFuture,User,Copilot,"remove the `send_http_request`, as it is not used now",Remov*,https://github.com/NewFuture/DDNS/pull/536
+2208951985,3022702102,3203097519,onnx/test/cpp/inliner_test.cc,gramalingam,User,Copilot,@copilot can you fix this?,Fix*,https://github.com/onnx/onnx/pull/7112
+2250012969,3082208949,3276106793,macros/edr/materializations/test/test.sql,haritamar,User,Devin,"There is a chance we might over censor here (e.g. if we select * from another table in a CTE), but I guess it's better to be safe.
+Maybe just worth adding a comment that clarifies it.",Add*,https://github.com/elementary-data/dbt-data-reliability/pull/833
+2095737695,2850809554,3073877552,alpha_factory_v1/demos/era_of_experience/colab_era_of_experience.ipynb,Copilot,Bot,OpenAI_Codex,"[nitpick] This hard-coded repo path may break if the repository folder is renamed or structured differently. Use a relative path (e.g., `Path().cwd() / ...`) or locate the sample dynamically.
+```suggestion
+        ""csv_path = Path(__file__).parent / 'macro_sentinel/offline_samples/stable_flows.csv'\n"",
+```",Renam*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/364
+2152481203,2936006436,3132622672,packages/http-specs/specs/type/union/discriminated/main.tsp,Copilot,Bot,Copilot,"Restructured the discriminated union scenarios using the suggested hierarchical organization:
+
+```
+Envelope
+  Object
+    Default (/envelope/object/default)
+    CustomProperties (/envelope/object/custom-properties)
+NoEnvelope (/no-envelope)
+```
+
+This provides better scalability for future envelope types while maintaining clear separation. Updated all routes, operation names, and mockapi implementations to match. Commit baf0ee6.",Organiz*; Restructur*,https://github.com/microsoft/typespec/pull/7602
+2133072755,2906414697,3125880075,sdk/evaluation/azure-ai-evaluation/azure/ai/evaluation/_evaluate/_evaluate.py,Copilot,Bot,Copilot,"Done! Removed user_agent from the public interface and moved it to kwargs. The function now extracts user_agent from kwargs with `kwargs.pop('user_agent', None)`. (4a50187d)",Extract*; Mov*; Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41465
+2202783392,3013327209,3225486077,tests/test_util_comment.py,Copilot,Bot,Copilot,Fixed Python 2.7 compatibility by replacing subTest with a traditional loop and detailed error messages. Commit 445f73a,Fix*; Replac*,https://github.com/NewFuture/DDNS/pull/515
+2238535908,3065469002,3272051898,dev/generate_requirements.py,harupy,User,Copilot,"```suggestion
+```
+
+let's remove this comment. It's obvious it sorts.",Remov*,https://github.com/mlflow/mlflow/pull/16927
+2160580877,2948453807,3140941069,docs/design/modular-frontend-architecture.md,Copilot,Bot,Copilot,"Updated the Python frontend pipeline to use a nested FixedPointPipeline for AST preprocessing passes to match existing behavior. This ensures passes run repeatedly until no changes are made, similar to SimplifyPass. Commit 1a7ce27",Chang*; Fix*; Simplif*,https://github.com/spcl/dace/pull/2043
+2110931259,2873601485,3090570894,dace/codegen/targets/cpu.py,tbennun,User,Copilot,Remnant of a now-removed argument.,Remov*,https://github.com/spcl/dace/pull/2019
+1938588531,2588647008,2819900203,financial-analysis/main.py,yiranwu0,User,Devin,This code is retrieved from stack-overflow so I didn't modify that.,Modif*,https://github.com/ag2ai/build-with-ag2/pull/16
+2199096481,3007876717,3220848104,airbyte-integrations/connectors/source-sftp/metadata.yaml,theyueli,User,Devin,"please also add
+
+  connectorBuildOptions:
+    baseImage: docker.io/airbyte/java-connector-base:2.0.0@sha256:5a1a21c75c5e1282606de9fa539ba136520abe2fbd013058e988bb0297a9f454
+
+to the metadata.yaml",Add*,https://github.com/airbytehq/airbyte/pull/62924
+2199484351,3008432614,3221411520,tests/func/test_audio.py,sourcery-ai[bot],Bot,Cursor,"**suggestion (code-quality):** Inline variable that is immediately yielded ([`inline-immediately-yielded-variable`](https://docs.sourcery.ai/Reference/Default-Rules/refactorings/inline-immediately-yielded-variable/))
+
+```suggestion
+    yield file.get_fragment(start, start + 0.5)
+```",Inlin*; Refactor*,https://github.com/iterative/datachain/pull/1227
+2149718946,2931716176,3130921190,doc/codegen/modular_codegen_design.md,Copilot,Bot,Copilot,Added clarification note to AllocationAnalysisPass stating this document describes a refactoring of current implicit decisions which may evolve toward more explicit user control in future versions. See commit 66be6e8.,Add*; Refactor*,https://github.com/spcl/dace/pull/2036
+2193656361,2999412634,3214013725,airbyte-ci/connectors/base_images/base_images/templates/README.md.j2,dbgold17,User,Devin,this was added by mistake. AFAICT this Changelog is for versions of the airbyte-ci base images tool,Add*; Chang*,https://github.com/airbytehq/airbyte/pull/62864
+2214902862,3031814930,3241734959,ddns/util/http.py,Copilot,Bot,Copilot,Removed `send_http_request` function as requested. All functionality is now available through the `request` function. Commit 1c6876a.,Remov*,https://github.com/NewFuture/DDNS/pull/536
+2173578888,2969063123,3184979418,src/web/src/Components/MermaidRenderer/index.tsx,Copilot,Bot,Devin,"[nitpick] Add appropriate ARIA attributes (e.g., role=""img"" and aria-label) to this container so screen readers can convey the diagram’s purpose.
+```suggestion
+      ref={container}
+      role=""img""
+      aria-label={ariaLabel || ""Mermaid diagram""} // Default label if none is provided
+```",Add*,https://github.com/ai-shifu/ai-shifu/pull/592
+2138293498,2914248455,3133771594,src/qcodes/dataset/database_extract_runs.py,astafan8,User,Copilot,Could you refactor this function so that the dataset.export call is not duplicated? I think it's easier to read the code that way,Refactor*,https://github.com/microsoft/Qcodes/pull/7213
+2131318989,2903537314,3118419390,spring-kafka/src/main/java/org/springframework/kafka/listener/KafkaMessageListenerContainer.java,sobychacko,User,OpenAI_Codex,"I agree with @artembilan's comments above. Explicitly starting before the listener and stopping the observations after the listener method is invoked creates semantic confusion. It gives the impression that the observations cover the listener's processing. However, they are not for the whole batch; observations are made per record. Each observation will include the listener method invocation duration, which is misleading.
+In addition, managing `start()` and `stop()` manually, plus storing observations in a `List`, adds complexity and potential memory overhead for large batches.
+As Artem pointed out, we should use `Observation.observe()` to create and complete each observation before the listener runs. This method handles the observation lifecycle in one shot. It starts the observation, opens any scopes, executes the callback, handles errors by marking them on the observation, stops the observation, and closes any scopes. As you can see, it automatically does a lot of heavy lifting on your behalf. Manually calling `start`, `stop`, etc., makes things more error-prone, so I suggest going by the `observe()` approach with a callback for logging purposes, as Artem suggested above. This clarifies the semantics, as observations are completed before the listener, showing they only cover header extraction, avoiding confusion about their scope. Especially when tracing from a tool on the front-end, it will be very confusing if all the observations from the batch erroneously report the entire batch processing as part of their spans.
+
+Also, as Artem has already pointed out, please consolidate all the error handling, timers, etc., from the calling method.",Add*; Creat*; Extract*,https://github.com/spring-projects/spring-kafka/pull/3944
+2243126978,3072231726,3275306468,Python-3.11.9/Lib/lib2to3/pgen2/conv.py,aikido-pr-checks[bot],Bot,Cursor,"**Unsafe eval usage can lead to remote code execution** - critical severity
+Using eval on expressions based on user input can execute arbitrary code.
+
+**Remediation:** Consider using ast.literal_eval as an alternative. If that is not possible, replace the usage with a safer alternative that strictly parses the expected input format.
+<sup>[View details in Aikido Security](https://app.aikido.dev/featurebranch/scan/39475734?groupId=30572)</sub>",Replac*,https://github.com/datahub-project/datahub/pull/14258
+1915944400,2551559195,2788840620,.github/workflows/ci.yml,spillai,User,Devin,Add python version suffix to the cache identifier ,Add*,https://github.com/vlm-run/vlmrun-hub/pull/74
+2209193823,3023061197,3234229310,onnx/defs/math/defs.cc,Copilot,Bot,Copilot,"You're absolutely right! I've implemented proper operator versioning by:
+
+1. **TopK**: Moved v11 definition to `math/old.cc` and created v24 with `all_numeric_types_ir4()` 
+2. **SplitToSequence**: Created `sequence/old.cc`, moved v11 definition there, and created v24 with `all_tensor_types_ir4()` and `all_tensor_sequence_types_ir4()`
+
+This maintains backward compatibility while enabling bfloat16 support in the new v24 definitions. Changes implemented in commit 092a6ea.",Chang*; Creat*; Mov*; Split*,https://github.com/onnx/onnx/pull/7124
+1896254004,2521315199,2756921963,tests/litellm_handlers/test_litellm_integration.py,entelligence-ai-pr-reviews[bot],Bot,Devin,"🤖  Bug Fix:<br>
+<strong>Enhance Functionality of `sync_stream` Function</strong>
+The `sync_stream` function currently iterates over the `stream_result` but does not process or utilize the streamed data, which is a logical error. This can lead to confusion or errors in future development. To resolve this, you should either implement logic to handle the streamed data within the loop or remove the function if it is not needed. 
+
+### Suggested Actions:
+- **Implement Data Processing:** If the function is intended to process streamed data, add logic to handle the data within the loop. For example, you could log the content or perform some operation on it.
+- **Remove Unnecessary Function:** If the function is not required, consider removing it to maintain code clarity and avoid confusion.
+
+### Example Code Suggestion:
+Below is a suggestion to log the content of the streamed data:
+```python
+def sync_stream():
+    litellm.api_key = os.getenv(""ANTHROPIC_API_KEY"")
+    stream_result = litellm.completion(
+        model=""anthropic/claude-3-opus-20240229"",
+        messages=[{""role"": ""user"", ""content"": ""Hello from sync streaming""}],
+        stream=True,
+    )
+    for chunk in stream_result:
+        if hasattr(chunk, ""choices"") and chunk.choices[0].delta.content:
+            print(chunk.choices[0].delta.content)  # Example of processing the streamed data
+```
+
+
+<details>
+<summary><strong>🔧 Suggested Code Diff: </strong></summary>
+
+```python
+def sync_stream():
+    litellm.api_key = os.getenv(""ANTHROPIC_API_KEY"")
+    stream_result = litellm.completion(
+        model=""anthropic/claude-3-opus-20240229"",
+        messages=[{""role"": ""user"", ""content"": ""Hello from sync streaming""}],
+        stream=True,
+    )
+    for chunk in stream_result:
+        if hasattr(chunk, ""choices"") and chunk.choices[0].delta.content:
+            print(chunk.choices[0].delta.content)  # Example of processing the streamed data
+```
+
+</details>
+<!-- suggestion_start -->
+
+<details>
+<summary><strong>📝 Committable Code Suggestion</strong></summary>
+
+> ‼️ Ensure you review the code suggestion before committing it to the branch. Make sure it replaces the highlighted code, contains no missing lines, and has no issues with indentation. 
+
+```suggestion
+def sync_stream():
+    litellm.api_key = os.getenv(""ANTHROPIC_API_KEY"")
+    stream_result = litellm.completion(
+        model=""anthropic/claude-3-opus-20240229"",
+        messages=[{""role"": ""user"", ""content"": ""Hello from sync streaming""}],
+        stream=True,
+    )
+    for chunk in stream_result:
+        if hasattr(chunk, ""choices"") and chunk.choices[0].delta.content:
+            # Log the content of the streamed data for further processing or debugging
+            print(chunk.choices[0].delta.content)  # Example of processing the streamed data
+
+```
+
+</details><details><summary>📜 Guidelines</summary><br>
+
+• Use meaningful variable and function names following specific naming conventions
+
+</details>
+
+---
+
+",Add*; Code clarity; Enhanc*; Fix*; Remov*; Replac*,https://github.com/AgentOps-AI/agentops/pull/603
+2199021065,3007778311,3220223180,triton_viz/static/infoPopup.js,mark14wu,User,Claude_Code,"By `git blame`, `infoPopup.js` is created by Daniyal.",Creat*,https://github.com/Deep-Learning-Profiling-Tools/triton-viz/pull/86
+2202860988,3013450967,3225468380,custom_components/smart_irrigation/__init__.py,Copilot,Bot,Copilot,Fixed in commit 8581349. The async_update_config method is now properly async and can be awaited.,Fix*,https://github.com/jeroenterheerdt/HAsmartirrigation/pull/585
+2144631259,2924088640,3142842662,.circleci/config.yml,harupy,User,Copilot,Let's simplify this. We can just show the total size of docs/build/latest directory.,Simplif*,https://github.com/mlflow/mlflow/pull/16243
+2138255191,2914178293,3133771594,src/qcodes/dataset/database_extract_runs.py,astafan8,User,Copilot,"ok, that's better but please remove adding the exception itself to the message in log.exception, because that's a duplication of content.",Add*; Remov*,https://github.com/microsoft/Qcodes/pull/7213
+1956867049,2618988745,2854721329,marimo/_runtime/executor.py,dmadisetti,User,Devin,Would revert changes for full file,Chang*,https://github.com/marimo-team/marimo/pull/3806
+2220016286,3039335843,3214122373,examples/simple_expansion_demo.py,tbennun,User,Copilot,"No need for example file, please remove",Remov*,https://github.com/spcl/dace/pull/2077
+1947348343,2603113059,2839327801,.github/workflows/auto_merge_notification.yml,aaronsteers,User,Devin,"
+
+```suggestion
+# When a PR is has the auto-merge feature enabled or disabled, this workflow adds or removes
+# warning text at the bottom of the PR description.
+
+name: ""Add Auto-Merge Notification Text""
+```",Add*; Merg*; Remov*,https://github.com/airbytehq/PyAirbyte/pull/604
+2094814455,2849346343,3072456373,alpha_factory_v1/demos/aiga_meta_evolution/openai_agents_bridge.py,Copilot,Bot,OpenAI_Codex,"The tool description states that the result should be a list of (generation, avg_fitness), but the function returns a dictionary containing the history under the 'history' key. Consider aligning the description with the actual return type or modifying the return value for consistency.",Modif*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/353
+2179910012,2978927950,3195187523,backend/infrahub/core/schema/__init__.py,Copilot,Bot,Copilot,"I've refactored the validation as requested. The `backend/infrahub/core/schema/__init__.py` file is now intact as it was originally, and the Python keyword validation has been moved to `backend/infrahub/core/schema/schema_branch.py` where it fits better with the existing validation architecture.
+
+The changes include:
+- Added `validate_python_keywords()` method to the `SchemaBranch` class
+- Integrated it into the `process_validate()` pipeline alongside other validation methods
+- Updated tests to work with the new location
+- Maintained API compatibility with a minimal `validate()` method in `SchemaRoot` for namespace validation only
+
+The end-to-end functionality remains the same - Python keyword validation still occurs during schema loading, but now in the appropriate location within the SchemaBranch validation pipeline. Commit 980a03c addresses this feedback.",Add*; Chang*; Mov*; Refactor*,https://github.com/opsmill/infrahub/pull/6767
+2094203324,2848390085,3071037378,autogpt_platform/backend/backend/blocks/google/gmail.py,Copilot,Bot,OpenAI_Codex,"Consider adding error handling around file operations when reading attachments to ensure that missing or inaccessible files do not cause an unexpected crash.
+```suggestion
+            try:
+                with open(abs_path, ""rb"") as f:
+                    part.set_payload(f.read())
+                encoders.encode_base64(part)
+                part.add_header(
+                    ""Content-Disposition"", f""attachment; filename={Path(abs_path).name}""
+                )
+                msg.attach(part)
+            except (FileNotFoundError, PermissionError) as e:
+                # Log the error and skip this attachment
+                print(f""Error reading attachment {abs_path}: {e}"")
+```",Add*,https://github.com/Significant-Gravitas/AutoGPT/pull/9962
+2202708537,3013213038,3225420842,test_checker_context_improvement.py,github-actions[bot],Bot,Copilot,"````suggestion
+        graph.output.extend([output_value_info])
+
+        # Add the problematic initializer
+        graph.initializer.extend([problematic_tensor])
+
+        # Create a minimal node
+````",Add*; Creat*; Extend*,https://github.com/onnx/onnx/pull/7122
+1980444506,2659473287,2895731914,agentops/config.py,entelligence-ai-pr-reviews[bot],Bot,Devin,"The `exporter` parameter accepts `Any` type without validation, which could lead to runtime errors. Should validate the exporter has required methods/interface.
+<!-- suggestion_start -->
+
+<details>
+<summary><strong>📝 Committable Code Suggestion</strong></summary>
+
+> ‼️ Ensure you review the code suggestion before committing it to the branch. Make sure it replaces the highlighted code, contains no missing lines, and has no issues with indentation. 
+
+
+```suggestion
+        self.exporter: Optional[MetricsExporter] = None
+        self.exporter_endpoint: Optional[str] = None
+```
+</details>
+<!-- suggestion_end -->
+",Replac*,https://github.com/AgentOps-AI/agentops/pull/728
+2101144369,2859086894,3081381028,alpha_factory_v1/demos/alpha_agi_insight_v0/openai_agents_bridge.py,Copilot,Bot,OpenAI_Codex,"Consider extracting the hardcoded prefix 'fallback_mode_active: ' into a well-named constant. This would improve maintainability and make future modifications easier.
+```suggestion
+        return f""{FALLBACK_MODE_PREFIX}{summary}""
+```",Extract*; Improv*; Modif*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/492
+2173529687,2968999168,3185333353,src/torchio/transforms/augmentation/spatial/random_affine.py,Copilot,Bot,Copilot,Removed mention of default values from the docstring. Commit 92e622f,Remov*,https://github.com/TorchIO-project/torchio/pull/1330
+2159538604,2947080916,3146332801,onnxscript/rewriter/_rewrite_rule.py,Copilot,Bot,Copilot,The comment has been removed as part of splitting this PR into documentation-only changes. The code change that included this comment will be addressed in a separate PR as requested. Commit 70eaae8,Add*; Chang*; Remov*; Split*,https://github.com/microsoft/onnxscript/pull/2392
+1911121863,2543546534,2780834098,vlmrun/hub/schemas/contrib/document/us_passport.py,spillai,User,Devin,Remove this `Config`,Remov*,https://github.com/vlm-run/vlmrun-hub/pull/67
+2096605572,2852175449,3075224580,alpha_factory_v1/demos/alpha_agi_business_v1/colab_alpha_agi_business_v1_demo.ipynb,Copilot,Bot,OpenAI_Codex,"Add error handling to check the HTTP response status before calling resp.json() to avoid runtime exceptions when the request fails.
+```suggestion
+    ""if resp.status_code == 200:\n"",
+    ""    try:\n"",
+    ""        print('recent alpha:', resp.json())\n"",
+    ""    except ValueError as e:\n"",
+    ""        print('Error decoding JSON response:', e)\n"",
+    ""else:\n"",
+    ""    print(f'Error: Received status code {resp.status_code} with response: {resp.text}')""
+```",Add*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/396
+2185929689,2988085890,3197983076,buildSrc/.kotlin/sessions/kotlin-compiler-11942460071141257730.salive,Copilot,Bot,Copilot,Removed the Kotlin compiler session file and updated .gitignore to prevent future build artifacts from being committed. (467a402),Remov*,https://github.com/microsoft/ApplicationInsights-Java/pull/4260
+1896256463,2521317871,2756921963,tests/openai_handlers/test_openai_integration.py,entelligence-ai-pr-reviews[bot],Bot,Devin,"⚠️  Potential Issue:<br>
+<strong>Verify Model Change in OpenAI API Call</strong>
+The change from 'gpt-4o-mini' to 'gpt-3.5-turbo' in the OpenAI API call could impact the test's functionality and results. It is crucial to confirm that this modification is intentional and aligns with the test's objectives. Additionally, update any related documentation or test expectations to reflect this change. Ensure that 'gpt-3.5-turbo' meets the requirements of the test scenario and does not introduce unintended side effects.
+
+
+
+---
+
+",Add*; Chang*; Introduc*; Modif*,https://github.com/AgentOps-AI/agentops/pull/603
+2106076116,2866716559,3082820826,mlflow/tracing/utils/__init__.py,B-Step62,User,Copilot,"@copilot This is not great. Let's revert the previous change. Instead, can you make sure removing 'cls' attribute only if it is the first argument? This should reduce the false positive enough.",Chang*; Reduc*; Remov*,https://github.com/mlflow/mlflow/pull/15839
+2186166125,2988422987,3203097519,onnx/inliner/inliner.cc,Copilot,Bot,Copilot,"Done! Refactored the `Renamer::Impl` class to inherit from `InliningRenamer` instead of implementing its own logic. The new implementation leverages the existing recursive traversal functionality for handling graph-value attributes in nodes, which was the key issue you pointed out. See commit 6c9e916.",Inlin*; Refactor*; Renam*,https://github.com/onnx/onnx/pull/7112
+2132916619,2906133773,3101464221,sdk/servicebus/azure-servicebus/TROUBLESHOOTING.md,swathipil,User,Copilot,remove this section,Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41352
+2099934442,2857173384,3079684446,templates/workspace_services/gitea/terraform/outputs.tf,Copilot,Bot,Copilot,"Consider adding a `description` for this output to match other outputs and improve clarity, e.g. `description = ""Whether the Gitea service is exposed externally""`.
+```suggestion
+  value       = var.is_exposed_externally
+  description = ""Whether the Gitea service is exposed externally""
+```",Add*; Improv*,https://github.com/microsoft/AzureTRE/pull/4559
+2099331454,2856262879,3078356584,lisa/main.py,squirrelsc,User,Copilot,"It should be fixed by set cache_path, after the working path is set. It doesn't need to change the _runtime_root. Make the change simpler.",Chang*; Fix*,https://github.com/microsoft/lisa/pull/3811
+2107036976,2867977880,3090570894,tests/undefined_symbol_in_sdfg_test.py,Copilot,Bot,Copilot,"Created a new test case test_undefined_symbol_in_unused_dimension that implements this scenario with the shape [undefined_dim, 20] and accessing tmp[0, i]. Code generation should work when the undefined dimension isn't actually used.",Creat*,https://github.com/spcl/dace/pull/2019
+2146978522,2928422987,3145372553,onnxscript/function_libs/torch_lib/ops/prims.py,Copilot,Bot,Copilot,Updated to use `target_rank = len(shape)` for compile-time efficiency instead of the runtime `op.Size(shape)` operation. Fixed in 65ed52f.,Fix*,https://github.com/microsoft/onnxscript/pull/2382
+2202767952,3013284463,3225037054,ddns/provider/namesilo.py,NewFuture,User,Copilot,"merge them
+```
+rrid= old_record.get(""record_id"")
+domain=main_domain
+rrttl=ttl or old_record.get(""ttl"")
+ rrhost=old_record.get(""host"", subdomain),
+```",Merg*,https://github.com/NewFuture/DDNS/pull/514
+2144347049,2923635111,3140666398,tests/tracking/fluent/test_fluent.py,serena-ruan,User,Copilot,Should we revert the changes in tests?,Chang*,https://github.com/mlflow/mlflow/pull/16231
+1923749467,2564666685,2797157546,modal/runner.py,mwaskom,User,Devin,"IMO this isn't a great warning message because the ""output manager"" isn't part of our public API, so it introduces a new concept users don't need to think about. Downside of an overly verbose LLM.",Introduc*,https://github.com/modal-labs/modal-client/pull/2781
+2138160709,2913980135,3133771594,tests/dataset/test_export_datasets_and_create_metadata_db.py,astafan8,User,Copilot,perhaps refactor dataset creation into a separate pytest fixture that can be re-used across the tests?,Creat*; Fix*; Refactor*,https://github.com/microsoft/Qcodes/pull/7213
+2159750774,2947404899,3160616420,docs/IR.md,gramalingam,User,Copilot,"Please add ""(IR version >= 11)"" as down below.",Add*,https://github.com/onnx/onnx/pull/7056
+2094630971,2849093342,3072070696,alpha_factory_v1/demos/meta_agentic_agi_v2/meta_agentic_agi_demo_v2.py,Copilot,Bot,OpenAI_Codex,"The mock branch sets `txt` and `cost` but never initializes `latency`, which will cause a NameError or undefined value. Add `latency = 0.0` (or appropriate value) before returning.
+```suggestion
+            cost = 0.0
+            latency = 0.0
+```",Add*,https://github.com/MontrealAI/AGI-Alpha-Agent-v0/pull/334
+2243304747,3072518319,3261242871,docs/enterprise/ag_grid/cell-selection.md,Lendemor,User,Devin,"enable_range_selection is not a prop of ag_grid, remove all mentions of it. Only use cell_selection dict mode for details",Remov*,https://github.com/reflex-dev/reflex-web/pull/1543
+2202790453,3013338625,3225486077,ddns/config/file.py,Copilot,Bot,Copilot,"[nitpick] The comment is in Chinese while the rest of the codebase appears to use English comments. Consider using English for consistency: '# Remove single-line comments (# and // styles)'.
+```suggestion
+        # Remove single-line comments (styles: # and //)
+```",Remov*,https://github.com/NewFuture/DDNS/pull/515
+2107036656,2867977407,3090570894,tests/undefined_symbol_in_sdfg_test.py,Copilot,Bot,Copilot,Moved the test_undefined_symbol_propagation function to undefined_symbol_test.py as it doesn't use an SDFG,Mov*,https://github.com/spcl/dace/pull/2019
+2180545359,2979941499,3196510307,examples/promptframe/src/promptframe/utils.py,ellipsis-dev[bot],Bot,Cursor,"The call to first_instance.model_dump() in expand_pydantic_to_columns appears redundant since its result is not used. Consider removing it if not needed.
+```suggestion
+
+```
+",Remov*,https://github.com/567-labs/instructor/pull/1644
+2219705274,3038882020,3246982201,packages/http-client-csharp/generator/TestProjects/Local.Tests/ExtensibleEnumNullableTests.cs,Copilot,Bot,Copilot,"I attempted to run `eng/scripts/Generate.ps1` as requested, but encountered environment setup issues:
+
+1. **TypeScript Compilation Errors**: The emitter build fails with missing dependencies (`@azure-tools/typespec-client-generator-core`, `@typespec/compiler`) and compilation errors
+2. **.NET SDK Version Mismatch**: The project requires .NET SDK 9.0.102 but the environment has 8.0.117
+
+The script tries to build the emitter before regenerating libraries, which prevents completion. While I successfully ran `pnpm build` for the entire monorepo, the http-client-csharp emitter specifically has dependency issues.
+
+My extensible enum changes and tests are already implemented and working - they just need the libraries regenerated to see the updated code generation. The environment would need .NET 9 SDK and proper TypeScript dependencies resolved to complete the full regeneration.",Chang*,https://github.com/microsoft/typespec/pull/7967
+2240690599,3068778628,3250546916,olive/cli/optimize.py,xiaoyu-work,User,Copilot,Remove `vision` as this is not supported.,Remov*,https://github.com/microsoft/Olive/pull/1996
+1904834616,2533276332,2771538261,src/bespokelabs/curator/llm/llm.py,shreyaspimpalgaonkar,User,Devin,"For this snippet,
+
+```python 
+from typing import List
+
+from datasets import Dataset
+from pydantic import BaseModel, Field
+
+from bespokelabs import curator
+
+# Create a dataset object for the topics you want to create the poems.
+topics = Dataset.from_dict(
+    {""topic"": [""Urban loneliness in a bustling city"", ""Beauty of Bespoke Labs's Curator library""]}
+)
+
+
+# Define a class to encapsulate a list of poems.
+class Poem(BaseModel):
+    poem: str = Field(description=""A poem."")
+
+
+class Poems(BaseModel):
+    poems_list: List[Poem] = Field(description=""A list of poems."")
+
+
+# removing the type annotation for `poems` works fine.
+def parse_func(row, poems: Poems):
+    return [{""topic"": row[""topic""], ""poem"": p.poem} for p in poems.poems_list]
+
+
+# We define a Prompter that generates poems which gets applied to the topics dataset.
+poet = curator.LLM(
+    prompt_func=lambda row: f""Write two poems about {row['topic']}."",
+    model_name=""gpt-4o-mini"",
+    response_format=Poems,
+    parse_func=parse_func,
+)
+poem = poet(topics)
+print(poem.to_pandas())
+```
+
+I get the following error: 
+
+```
+/Users/shreyaspimpalgaonkar/Library/Caches/pypoetry/virtualenvs/bespokelabs-curator-Ky8xEGex-py3.10/lib/python3.10/site-packages/dill/_dill.py:414: PicklingWarning: Cannot locate reference to <class '__main__.Poem'>.
+  StockPickler.save(self, obj, save_persistent_id)
+/Users/shreyaspimpalgaonkar/Library/Caches/pypoetry/virtualenvs/bespokelabs-curator-Ky8xEGex-py3.10/lib/python3.10/site-packages/dill/_dill.py:414: PicklingWarning: Cannot pickle <class '__main__.Poem'>: __main__.Poem has recursive self-references that trigger a RecursionError.
+  StockPickler.save(self, obj, save_persistent_id)
+/Users/shreyaspimpalgaonkar/Library/Caches/pypoetry/virtualenvs/bespokelabs-curator-Ky8xEGex-py3.10/lib/python3.10/site-packages/dill/_dill.py:414: PicklingWarning: Cannot locate reference to <class '__main__.Poems'>.
+  StockPickler.save(self, obj, save_persistent_id)
+/Users/shreyaspimpalgaonkar/Library/Caches/pypoetry/virtualenvs/bespokelabs-curator-Ky8xEGex-py3.10/lib/python3.10/site-packages/dill/_dill.py:414: PicklingWarning: Cannot pickle <class '__main__.Poems'>: __main__.Poems has recursive self-references that trigger a RecursionError.
+  StockPickler.save(self, obj, save_persistent_id)
+```",Creat*; Encapsulat*; Remov*,https://github.com/bespokelabsai/curator/pull/305
+2127156429,2897643966,3118419390,spring-kafka-docs/src/main/antora/modules/ROOT/pages/appendix/change-history.adoc,artembilan,User,OpenAI_Codex,"The place for this info is not correct.
+Has to be in `What's New`.
+The `Change History` is for older versions - former `What's New`.
+And `What's New` is just a simple sentence to lead us to the target chapter with more details.
+More over we are not sure in the implementation yet, so docs was a bit of overhead for your effort.
+But thanks anyway!",Chang*,https://github.com/spring-projects/spring-kafka/pull/3944
+2110494778,2872993462,3095413885,packages/tspd/src/ref-doc/emitters/markdown.ts,Copilot,Bot,Copilot,"I've run `pnpm install` and `pnpm build`, followed by `pnpm regen-docs`. The section title has been updated from ""Usage"" to ""Emitter usage"" across multiple README files and website documentation. The changes can be seen in the documentation for emitters like http-client-js, http-server-csharp, http-server-js, json-schema, openapi3, and protobuf.",Chang*,https://github.com/microsoft/typespec/pull/7481
+2141208831,2918897407,3081186157,packages/http-client-csharp/eng/pipeline/publish.yml,Copilot,Bot,Copilot,Fixed the PowerShell script path issue. The filePath parameter was incorrectly using $(Build.SourcesDirectory) prefix when it should be relative to the working directory. Changed from `$(Build.SourcesDirectory)/eng/common/scripts/Submit-AzureSdkForNetPr.ps1` to `eng/common/scripts/Submit-AzureSdkForNetPr.ps1`. (commit 45414e9),Chang*; Fix*,https://github.com/microsoft/typespec/pull/7426
+2078284664,2822868734,3046875250,agent/api/agent_server/models.py,keugenek,User,Devin,make sure to sync this change with tsp file ,Chang*,https://github.com/appdotbuild/agent/pull/168
+2199446950,3008392678,3221328642,Cargo.toml,Copilot,Bot,Copilot,Moved `loom` to dev-dependencies as requested in commit c8e4b91.,Mov*,https://github.com/mosecorg/mosec/pull/658
+2098934543,2855680509,3075243153,python/packages/autogen-agentchat/src/autogen_agentchat/teams/_group_chat/_graph/_digraph_group_chat.py,ekzhu,User,Copilot,Same as previous comment. Remove the string as an option. Only callable can be used as condition. ,Remov*,https://github.com/microsoft/autogen/pull/6565
+2110992196,2873691612,3096094015,.github/actions/github-script/action.yml,Copilot,Bot,Copilot,Checked the entire repository and confirmed that `script-file` is not used anywhere in the workflow files. Removed it from the composite action in commit 3f7d79f.,Remov*,https://github.com/mlflow/mlflow/pull/15929
+2103206119,2862264153,3084107311,.github/workflows/typespec-azure-integration-check.yml,Copilot,Bot,Copilot,"Updated the workflow to properly update the submodule using git commands instead of replacing the folder. Now it adds the PR repository as a remote to the submodule, fetches the PR commit, and checks it out directly. This avoids filesystem operations and uses the proper git submodule workflow. (84158cc)",Add*; Replac*,https://github.com/microsoft/typespec/pull/7439
+1980482504,2659535620,2895754600,agentops/session/__init__.py,entelligence-ai-pr-reviews[bot],Bot,Devin,"Changed `current` from a property decorator to a regular function which breaks backward compatibility and access patterns. Should keep `@property` decorator.
+<!-- suggestion_start -->
+
+<details>
+<summary><strong>📝 Committable Code Suggestion</strong></summary>
+
+> ‼️ Ensure you review the code suggestion before committing it to the branch. Make sure it replaces the highlighted code, contains no missing lines, and has no issues with indentation. 
+
+
+```suggestion
+@property
+def current(self) -> Optional[Session]:
+    """"""Get the current active session.
+
+    Returns:
+        The current active session if exactly one session exists, otherwise None.
+    """"""
+    return get_default_session()
+```
+</details>
+<!-- suggestion_end -->
+",Chang*; Replac*,https://github.com/AgentOps-AI/agentops/pull/729
+1908067558,2538598717,2776603613,vlmrun/hub/schemas/contrib/media/tv-news.py,spillai,User,Devin,Move the description field as the first one. ,Mov*,https://github.com/vlm-run/vlmrun-hub/pull/58
+2210848660,3025718046,3203097519,onnx/inliner/inliner.cc,github-actions[bot],Bot,Copilot,"````suggestion
+ private:
+  // Replace given name with a unique version of the name, and cache the
+````",Replac*,https://github.com/onnx/onnx/pull/7112
+2184944348,2986464317,3194656871,apollo-portal/src/main/java/com/ctrip/framework/apollo/portal/controller/ItemController.java,Copilot,Bot,Copilot,You're absolutely right. Removed the unnecessary `namespaceName` parameter from the `parseChangeSets` method and cascaded the change up through `compare` and `syncItems` methods. The parameter was never used in the implementation. Fixed in commit 48fd3d5.,Chang*; Fix*; Remov*,https://github.com/apolloconfig/apollo/pull/5419
+2136894399,2911925406,3130921190,doc/codegen/extending_modular_codegen.md,tbennun,User,Copilot,"This is not a good example. It does not showcase anything other than the target code generation, which is already easy to modify in the current structure (see `tutorials/codegen.ipynb` and `samples/codegen/tensor_cores.py`).
+
+The example needs to show something new and more involved.
+Please replace this with an OpenCL code generator that modifies, e.g., the allocation process and copies. You can then use the same example to demonstrate how an SDFG file might be split to another SDFG for the kernel portion alone (i.e., for the .cl file) and how the target code generation pass interacts with this.",Modif*; Replac*; Split*,https://github.com/spcl/dace/pull/2036
+2231767248,3031297902,3200033873,tests/test_augmentations.py,jveitchmichaelis,User,Copilot,"I suspect the model has added these tests because the Issue specifically called out blur, but exhaustively testing all combinations of transforms seems excessive (or singling out a particular one like this).",Add*,https://github.com/weecology/DeepForest/pull/1089
+2124266307,2893100928,3113782046,microsoft/runbook/azure.yml,Copilot,Bot,Copilot,"Currently, LISA has limited support for passing arrays via command line. The current implementation converts array strings to character lists rather than parsing them as YAML.
+
+**Current Workarounds:**
+
+1. **Use a variable file** (recommended):
+```yaml
+# variables.yml
+source_address_prefixes: ['192.168.1.0/24', '10.0.0.0/8']
+```
+```bash
+lisa -r ./microsoft/runbook/azure.yml -v ""variable_file:variables.yml""
+```
+
+2. **Environment variables**:
+```bash
+export LISA_source_address_prefixes=""['192.168.1.0/24','10.0.0.0/8']""
+lisa -r ./microsoft/runbook/azure.yml
+```
+
+3. **Command line** (currently broken but the intended syntax would be):
+```bash
+lisa -r ./microsoft/runbook/azure.yml -v ""source_address_prefixes:['192.168.1.0/24','10.0.0.0/8']""
+```
+
+The command line approach needs a fix to LISA's variable parsing to support YAML array syntax. The variable file approach is the most reliable current solution.",Fix*,https://github.com/microsoft/lisa/pull/3839
+2149115205,2930742454,3148655251,requirements/lint-requirements.txt,Copilot,Bot,Copilot,I ran ruff 0.11.13 and found 3 new lint errors related to the C420 rule (unnecessary dict comprehensions). I've fixed all of them using ruff's auto-fix which replaced dict comprehensions with `dict.fromkeys()` for better readability and efficiency. All checks now pass with the new ruff version. Fixed in commit 9c2f274.,Fix*; Replac*,https://github.com/mlflow/mlflow/pull/16273
+2202708526,3013213038,3225420842,test_checker_context_improvement.py,github-actions[bot],Bot,Copilot,"````suggestion
+        graph.node.extend([node])
+
+        # Test that the error message includes the output name
+````",Extend*,https://github.com/onnx/onnx/pull/7122
+2214841210,3031727502,3230682144,optimize/backend/src/main/java/io/camunda/optimize/rest/security/ccsm/CCSMSecurityConfigurerAdapter.java,abremard,User,Copilot,"I've just added ""owner"" to the list of allowed roles
+@RomanJRW can you help me review this PR from an Optimize perspective? Thanks 🙏 ",Add*,https://github.com/camunda/camunda/pull/35347
+2117572540,2883722488,3105161001,mlflow/R/mlflow/R/project-param.R,Copilot,Bot,Copilot,"[nitpick] The `double` branch here is unreachable given the allowed choices are only `numeric`, `integer`, or `string`. Please remove this case or include `double` in the valid `choices` vector to avoid confusion.
+```suggestion
+
+```",Remov*,https://github.com/mlflow/mlflow/pull/15987
+2136908239,2911957455,3130921190,doc/codegen/extending_modular_codegen.md,Copilot,Bot,Copilot,"Replaced the neuromorphic processor example with a comprehensive OpenCL code generator example that demonstrates custom allocation management, SDFG splitting for kernel generation (.cl files), and sophisticated target-code generator interactions as requested. See commit 4f14e86.",Replac*; Split*,https://github.com/spcl/dace/pull/2036
+2238586724,3065558468,3247126423,authentication/src/main/java/io/camunda/authentication/CamundaOAuthPrincipalServiceNoDbImpl.java,abremard,User,Copilot,"That's a good point, I've just removed the `CamundaOAuthPrincipalServiceNoDbImpl` and refactored the code according to the diagram. The only difference is I haven't implemented an abstract class because the group handling is done differently between DB and noDB (see [comment](https://github.com/camunda/camunda/pull/35632#discussion_r2238571835))",Refactor*; Remov*,https://github.com/camunda/camunda/pull/35632
+2208284343,3021734634,3233264502,frontend/src/scenes/max/utils/floatingMaxPositioning.ts,greptile-apps[bot],Bot,Cursor,"syntax: sidePanelStateLogic is used but not imported. Add import statement
+
+```suggestion
+    import { useLayoutEffect, useRef, useState } from 'react'
+import { useValues } from 'kea'
+import { panelLayoutLogic } from '~/layout/panel-layout/panelLayoutLogic'
+import { maxGlobalLogic } from '../maxGlobalLogic'
+import { sidePanelStateLogic } from '~/layout/panel-layout/sidePanelStateLogic'
+```",Add*,https://github.com/PostHog/posthog/pull/35081
+1909107053,2540366537,2777500617,vlmrun/hub/schemas/contrib/document/w2_form.py,spillai,User,Devin,We want to move this up (after wages_tips_other_compensation) so that the fields are ordered by Box #. ,Mov*,https://github.com/vlm-run/vlmrun-hub/pull/60
+2172827437,2967900985,3184013951,sunbeam/project/sunbeam_profile.py,Copilot,Bot,OpenAI_Codex,"Ensure that logging configuration keys does not inadvertently expose sensitive information in production environments. Consider masking or omitting secret keys if any may be present in the config.
+```suggestion
+        sensitive_keys = {""password"", ""secret"", ""api_key""}  # Add other sensitive keys as needed
+        non_sensitive_keys = [key for key in self.config.keys() if key not in sensitive_keys]
+        logger.debug(
+            f""Initialized SunbeamProfile with keys: {non_sensitive_keys}""
+```",Add*,https://github.com/sunbeam-labs/sunbeam/pull/540
+2124872323,2894035076,3108675807,src/main/java/org/edumips64/core/cache/CacheType.java,Copilot,Bot,Copilot,Removed the unused L1_UNIFIED enum value. You're correct that it wasn't used by the simulator's logic or UI - only L1_DATA and L1_INSTRUCTION are actually needed. (7c57565),Remov*,https://github.com/EduMIPS64/edumips64/pull/1360
+2104710239,2864616749,3086457034,.github/actions/validate-author/index.js,Copilot,Bot,Copilot,"I've included the GitHub handle in both validation error messages, showing it with the '@' symbol next to the role. This change is in commit bd97d9e.",Chang*,https://github.com/mlflow/mlflow/pull/15865
+2202862927,3013453703,3225468380,custom_components/smart_irrigation/__init__.py,Copilot,Bot,Copilot,Fixed in commit 8581349. The async_delete_mapping method is now properly async and can be awaited.,Fix*,https://github.com/jeroenterheerdt/HAsmartirrigation/pull/585
+2243126524,3072231101,3275306468,Python-3.11.9/Lib/collections/__init__.py,aikido-pr-checks[bot],Bot,Cursor,"**Unsafe eval usage can lead to remote code execution** - critical severity
+Using eval on expressions based on user input can execute arbitrary code.
+
+**Remediation:** Consider using ast.literal_eval as an alternative. If that is not possible, replace the usage with a safer alternative that strictly parses the expected input format.
+<sup>[View details in Aikido Security](https://app.aikido.dev/featurebranch/scan/39475734?groupId=30572)</sub>",Replac*,https://github.com/datahub-project/datahub/pull/14258
+2202048814,3012247813,3223461985,onnxscript/rewriter/_rewrite_rule.py,Copilot,Bot,Copilot,"Removed the `create_compiled_pattern()` method. The `PatternBase` constructor now creates and stores the `CompiledPattern` internally, and the `match()` method uses it directly. This provides a cleaner API where users only need to call `match()` without managing the compiled pattern manually. Fixed in commit aa36d46.",Creat*; Fix*; Remov*,https://github.com/microsoft/onnxscript/pull/2447
+2143120434,2921781603,3140613045,packages/http-client-csharp/generator/Microsoft.TypeSpec.Generator.ClientModel/src/Providers/CollectionResultDefinition.cs,JoshLove-msft,User,Copilot,This logic can be deleted because the create request method no longer has the next page param.,Creat*,https://github.com/microsoft/typespec/pull/7619
+2148953196,2930500859,3148267777,lisa/tools/ntttcp.py,Copilot,Bot,Copilot,"I've added MetricRelativity support to all unified performance metrics. The `throughput_in_gbps` metric is now correctly set to `HigherIsBetter`, along with appropriate relativity values for all other metrics (latency and timing metrics as `LowerIsBetter`, packet counts as `HigherIsBetter`, etc.). Changes committed in 1437d6f.",Add*; Chang*,https://github.com/microsoft/lisa/pull/3863
+2243126417,3072230957,3275306468,Python-3.11.9/Lib/bdb.py,aikido-pr-checks[bot],Bot,Cursor,"**Unsafe eval usage can lead to remote code execution** - critical severity
+Using eval on expressions based on user input can execute arbitrary code.
+
+**Remediation:** Consider using ast.literal_eval as an alternative. If that is not possible, replace the usage with a safer alternative that strictly parses the expected input format.
+<sup>[View details in Aikido Security](https://app.aikido.dev/featurebranch/scan/39475734?groupId=30572)</sub>",Replac*,https://github.com/datahub-project/datahub/pull/14258
+2178535921,2976971604,3193524394,ddns/provider/aliesa.py,Copilot,Bot,Copilot,"Changed AliesaProvider to extend AlidnsProvider, now reusing the _request method directly. Updated to use BaseProvider's _split_zone_and_sub while maintaining manual site ID functionality. Commit 6e335b9",Chang*; Extend*,https://github.com/NewFuture/DDNS/pull/498
+2104764842,2864700287,3086457034,.github/actions/validate-author/index.js,Copilot,Bot,Copilot,"Applied the suggested message change to specify that the workflow can only be triggered on PRs filed by a repository owner, member, or collaborator. I've also run prettier to ensure consistent formatting in commit 18692e5.",Chang*,https://github.com/mlflow/mlflow/pull/15865
+2217687471,3035882880,3246122368,app/common/src/main/java/stirling/software/common/service/TempFileCleanupService.java,Copilot,Bot,OpenAI_Codex,"The batch counter reset happens after the pause, but it should reset regardless of whether a pause occurs. Consider moving `processed = 0;` outside the pauseMs condition to ensure proper batch counting.",Mov*,https://github.com/Stirling-Tools/Stirling-PDF/pull/3992
+2136883602,2911919930,3130921190,doc/codegen/pass_implementation_examples.md,Copilot,Bot,Copilot,Removed the redundant pipeline implementation example since it's already covered in the design document. See commit 98a443c.,Remov*,https://github.com/spcl/dace/pull/2036
+2110110727,2872469431,3060998787,airbyte-integrations/connectors/source-mongodb-v2/metadata.yaml,theyueli,User,Devin,fixed.,Fix*,https://github.com/airbytehq/airbyte/pull/60252
+2159355713,2946781008,3163786071,scripts/automation_generate.sh,Copilot,Bot,Copilot,Already completed in commit 300167e. The sdk_package entry point has been removed from tools/azure-sdk-tools/setup.py along with deleting the sdk_package.py file.,Remov*,https://github.com/Azure/azure-sdk-for-python/pull/41693
+2196493008,3003818355,3217818042,docs/enterprise/mantine/index.md,greptile-apps[bot],Bot,Devin,"style: Missing links for RingProgress, SemiCircleProgress, and NumberFormatter components, unlike other component references above. Consider adding links for consistency.
+
+```suggestion
+## Progress & Feedback
+- **[RingProgress](/docs/enterprise/mantine/ring-progress)** - Circular progress indicators
+- **[SemiCircleProgress](/docs/enterprise/mantine/semi-circle-progress)** - Semi-circular progress displays
+- **[NumberFormatter](/docs/enterprise/mantine/number-formatter)** - Format and display numbers with localization
+```",Add*,https://github.com/reflex-dev/reflex-web/pull/1480
+2193206320,2998745254,3213367725,tools/azure-sdk-tools/ci_tools/parsing/parse_functions.py,Copilot,Bot,Copilot,Reverted the changes in `parse_setup_py` function back to the original state. The namespace discovery logic now only applies to `parse_pyproject`. Commit bc37693f.,Chang*,https://github.com/Azure/azure-sdk-for-python/pull/41942
+2202754927,3013276966,3225037054,ddns/provider/namesilo.py,Copilot,Bot,Copilot,Added documentation links for all API interfaces using @doc comments. Commit: a2a1d01,Add*,https://github.com/NewFuture/DDNS/pull/514
+2108366122,2869868035,3092813223,documentation/integrations/script.md,Copilot,Bot,Copilot,I've removed this section from the documentation as requested. (0c5c5a5),Remov*,https://github.com/frenck/spook/pull/975
+2147416726,2928952601,3138534395,src/sentry/integrations/source_code_management/language_parsers.py,iamrajjoshi,User,Cursor,added tests to verify behavior,Add*,https://github.com/getsentry/sentry/pull/93402
+2144322051,2923595578,3123684653,mlflow/ml-package-versions.yml,Copilot,Bot,Copilot,Applied the suggestion to add --no-deps flag to the pip install command. Commit d75e086,Add*,https://github.com/mlflow/mlflow/pull/16112
+2167104389,2958822221,3148932692,src/qcodes/dataset/data_set_protocol.py,Copilot,Bot,Copilot,"You're absolutely correct! I've fixed this cross-contamination issue. The problem was that when processing one toplevel parameter tree (e.g., y1), the method would incorrectly include other toplevel parameters (e.g., y2) that happen to depend on the same independent parameter (x).
+
+The fix adds logic to exclude toplevel parameters that are not already part of the current collection:
+
+```python
+# Exclude toplevel parameters that are not already in our tree
+toplevel_params = set(interdeps.dependencies.keys())
+# Only exclude toplevel params that aren't already part of our collection
+dependents = dependents - (toplevel_params - collected)
+```
+
+This ensures that each parameter tree remains separate while still allowing legitimate dependency chains within the same tree. Added a comprehensive test case to verify the fix. Commit: 3b1b0a7",Add*; Fix*,https://github.com/microsoft/Qcodes/pull/7240
+2231525028,3056069675,3254714553,packages/http-client-csharp/generator/TestProjects/Spector.Tests/Http/Payload/Pageable/ContinuationTokenPaginationTests.cs,jorgerangel-msft,User,Copilot,"since we are skipping the pageable scenarios from being generated, could we change the test attribute to Ignore and keep these files or will the library get overridden on re-invocation of the generate script?",Chang*,https://github.com/microsoft/typespec/pull/7984
+1896232593,2521288758,2756921963,tests/openai_handlers/test_openai_integration.py,entelligence-ai-pr-reviews[bot],Bot,Devin,"⚠️  Potential Issue:<br>
+<strong>Model Change in async_stream Function</strong>
+The change from 'gpt-4o-mini' to 'gpt-3.5-turbo' in the `async_stream` function could impact the function's behavior and output. It's crucial to ensure that 'gpt-3.5-turbo' meets the same requirements and expectations as 'gpt-4o-mini'. This change might introduce unexpected behavior or performance differences. 
+
+**Actionable Steps:**
+- Review the requirements and expected outputs for the `async_stream` function.
+- Conduct thorough testing to verify that 'gpt-3.5-turbo' produces the desired results.
+- Ensure no regressions are introduced with this model change.
+
+This will help maintain the integrity and performance of the integration test.
+
+
+
+---
+
+",Chang*; Introduc*,https://github.com/AgentOps-AI/agentops/pull/603
+2180517981,2979889671,3196510307,examples/promptframe/src/promptframe/engine.py,ellipsis-dev[bot],Bot,Cursor,"The progress bar update logic in the non-batch branch is redundant: results are first accumulated via as_completed and then overwritten by asyncio.gather. Consider refactoring to update progress within a single gather call while preserving order.
+",Refactor*,https://github.com/567-labs/instructor/pull/1644
+2101616073,2859754076,3081361910,lisa/operating_system.py,LiliDeng,User,Copilot,@copilot remove redundant f-string and quotes,Remov*,https://github.com/microsoft/lisa/pull/3816
+2228855404,3052175171,3260311457,browser_use/controller/service.py,cursor[bot],Bot,Cursor,"### Bug: Iframe Extraction Missing, Timeout Mismatch
+
+The `extract_structured_data` function has two issues:
+
+1.  **Missing iframe processing in fallback:** When PDF content extraction fails, the code falls back to regular HTML processing. This fallback path incorrectly omits the logic to extract and append iframe content, which is present in the main processing path. This results in incomplete data extraction, as iframe content is lost when PDF detection fails.
+2.  **Inconsistent timeout values:** The `page.content()` extraction uses a 10-second timeout, but its associated comments and error messages incorrectly state ""5 second aggressive timeout"", causing confusion.
+
+<details>
+<summary>Locations (1)</summary>
+
+- [`browser_use/controller/service.py#L325-L387`](https://github.com/browser-use/browser-use/blob/a3c09ee18d062a7aa3111fa307dc502899351fc8/browser_use/controller/service.py#L325-L387)
+
+</details>
+
+<a href=""https://cursor.com/open?data=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJ1Z2JvdC12MSJ9.eyJ2ZXJzaW9uIjoxLCJ0eXBlIjoiQlVHQk9UX0ZJWF9JTl9DVVJTT1IiLCJkYXRhIjp7InJlZGlzS2V5IjoiYnVnYm90OmIxYjY2MTQ4LWIzNjMtNGJiNS1hMmNjLWI1MjVlZDc0NmRlNiIsImVuY3J5cHRpb25LZXkiOiJQS0NmR2c3T3lWb2M4WXNTWVNVei1YNTN4N09zaHgxTHRXeFRpdl9qWTRZIiwiYnJhbmNoIjoiY3Vyc29yL2VuaGFuY2UtcGRmLXZpZXdlci1pbnRlcmFjdGlvbi1mb3ItZXh0cmFjdGlvbi1iYjE1In0sImlhdCI6MTc1MzM3MDg2NSwiZXhwIjoxNzUzOTc1NjY1fQ.cZL7MdUwi4HgDyqkgovbySAfBARntW62SAhcZ6MVMlgTBdHhFF655aWPAfKn0a4-jPpWDnbrkrl6iMS9gElzR6oFywho-1nox4nD1g8Zv3p3bxfI8XWTkj9vSDmHvbWKTa2ehtzDm8oPQJI-d92HxhPh1UZ1Y9OLmbSrSvnVaRgIX4wUkl4hc-pGAnyCK2s6hi_Rca6qD1687WLs1bGiIcDCsJuneL77nGphcUMvKxHjuL293Qq4StIgvEEObWuCc064SpB0iLrjpOjAjSawKdJikh_29oZfpAT2WvlHmzDrpd9VrCIrvKNvaqsQ7PEVCqyjg20vuYp4j_vpEv7P3g"">Fix in Cursor</a> • <a href=""https://cursor.com/agents?data=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJ1Z2JvdC12MSJ9.eyJ2ZXJzaW9uIjoxLCJ0eXBlIjoiQlVHQk9UX0ZJWF9JTl9XRUIiLCJkYXRhIjp7InJlZGlzS2V5IjoiYnVnYm90OmIxYjY2MTQ4LWIzNjMtNGJiNS1hMmNjLWI1MjVlZDc0NmRlNiIsImVuY3J5cHRpb25LZXkiOiJQS0NmR2c3T3lWb2M4WXNTWVNVei1YNTN4N09zaHgxTHRXeFRpdl9qWTRZIiwiYnJhbmNoIjoiY3Vyc29yL2VuaGFuY2UtcGRmLXZpZXdlci1pbnRlcmFjdGlvbi1mb3ItZXh0cmFjdGlvbi1iYjE1IiwicmVwb093bmVyIjoiYnJvd3Nlci11c2UiLCJyZXBvTmFtZSI6ImJyb3dzZXItdXNlIiwicHJOdW1iZXIiOjI1MzIsImNvbW1pdFNoYSI6ImEzYzA5ZWUxOGQwNjJhN2FhMzExMWZhMzA3ZGM1MDI4OTkzNTFmYzgifSwiaWF0IjoxNzUzMzcwODY1LCJleHAiOjE3NTM5NzU2NjV9.T5Af0nFyeRAEZbrOKcteo7txXUnGW3MvHB8bkBLxHbGGVFainsyGKIcUdWd-l1AXEUKIe6SKQOgAmGIDZRPqsjPS2rfNLe4xZj9WHHj_9hr3o1EURMgwUU__L0qvgYoLTMsRKNsFWXObx4ziWtoTpiD_xkRQuNxrs_cwhzmPtSbNGygz4pLyb1kSFkl1einREgZwqSB_fytz2XazOKZ1b5dCY_ynpIoY67_-wMe6nOsPg95H2kWdyekXnxlhUtZUmDgI0x4NRus7rvWWIjC6I-tBr_-rDL785K7rsXodLenk_inExoBbkbwaTXlDpAr-Dpncmz4Mpq3_pqU9SoWZMQ"">Fix in Web</a>
+
+",Extract*; Fix*,https://github.com/browser-use/browser-use/pull/2532
+2104685565,2864576279,3086457034,.github/actions/validate-author/index.js,Copilot,Bot,Copilot,"Use `core.error` (from `@actions/core`) instead of `console.error` to ensure errors are captured in GitHub Actions logs.
+```suggestion
+    core.error(`Error creating comment: ${error.message}`);
+```",Creat*,https://github.com/mlflow/mlflow/pull/15865
+2194527370,3000757665,3214555104,dev/check_function_signatures.py,serena-ruan,User,Claude_Code,Could we also check if the newly added param has a default value of None?,Add*,https://github.com/mlflow/mlflow/pull/16658
+2210071934,3024405033,3230529031,ddns/config/file.py,NewFuture,User,Copilot,remove the `configs` support. we do not support this feature,Remov*,https://github.com/NewFuture/DDNS/pull/524
+2219620182,3038751993,3246982201,packages/http-client-csharp/generator/TestProjects/Local.Tests/ExtensibleEnumNullableTests.cs,JoshLove-msft,User,Copilot,We shouldn't add a new test class. Instead update the existing EnumProviderTests file to have a test that validates the new operator is present. We should also add the negative case that validates the operator is not there for non-string based extensible enums.,Add*,https://github.com/microsoft/typespec/pull/7967

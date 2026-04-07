@@ -8,5 +8,3 @@ outputs/
 *.parquet
 *.xlsx
 ~$*.xlsx
-
-group_6.csv
