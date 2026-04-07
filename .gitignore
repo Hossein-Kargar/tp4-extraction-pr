@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+
+data_cache/
+outputs/
+
+*.parquet
+*.xlsx
+~$*.xlsx
+
+group_6.csv
